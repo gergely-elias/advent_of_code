@@ -3,12 +3,12 @@ input_lines = input_file.readlines()
 
 line = input_lines[0].strip().split('\t')
 blocks = [int(x) for x in line]
-states_already_seen = set()
-states_already_seen_in_order = []
+states_already_seen = {}
+state_counter = 0
 
 while tuple(blocks) not in states_already_seen:
-  states_already_seen.add(tuple(blocks))
-  states_already_seen_in_order.append(tuple(blocks))
+  states_already_seen[tuple(blocks)] = state_counter
+  state_counter += 1
   maximal_value = max(blocks)
   maximal_position = blocks.index(maximal_value)
 
@@ -16,5 +16,5 @@ while tuple(blocks) not in states_already_seen:
   for j in range(maximal_value):
     blocks[(maximal_position + 1 + j) % len(blocks)] += 1
 
-print len(states_already_seen) - states_already_seen_in_order.index(tuple(blocks))
+print state_counter - states_already_seen[tuple(blocks)]
 
