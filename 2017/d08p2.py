@@ -1,7 +1,9 @@
 input_file = open('inputd08.txt','r')
 input_lines = input_file.readlines()
 
-registers = {}
+import collections
+
+registers = collections.defaultdict(lambda: 0)
 maximal_register = float("-inf")
 for line in input_lines:
   expression = line.split(' ')
@@ -10,10 +12,6 @@ for line in input_lines:
   register_in_condition = expression[4]
   condition = 'registers["' + register_in_condition + '"]' + expression[5] + expression[6]
   
-  if register_in_condition not in registers:
-    registers[register_in_condition] = 0
-  if register_to_modify not in registers:
-    registers[register_to_modify] = 0
   if eval(condition):
     registers[register_to_modify] += increment
   
