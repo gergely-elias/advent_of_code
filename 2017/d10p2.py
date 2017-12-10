@@ -6,7 +6,7 @@ n = 256
 
 current_position = 0
 number_list = range(n)
-lengths = [44 if x==','else int(x)+48 for x in line]
+lengths = [ord(x) for x in line]
 lengths += [17, 31, 73, 47, 23]
 skip_size = 0
 for round in range(64):
