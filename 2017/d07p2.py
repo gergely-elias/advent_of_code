@@ -21,7 +21,7 @@ for line in input_lines:
 
 original_subtowers = copy.deepcopy(unknown_weight_subtowers)
 
-unbalanced_disk = None
+unbalanced_disc = None
 reference_weight = 0
 
 while True:
@@ -35,7 +35,7 @@ while True:
           weight_to_remove = disc_weights[disc] + len(weights_ordered) * known_weight_subtowers[disc][0]
           break
         else:
-          unbalanced_disk = disc
+          unbalanced_disc = disc
           reference_weight = weights_ordered[1]
           break
       elif len(known_weight_subtowers[disc]) == 0:
@@ -43,7 +43,7 @@ while True:
         weight_to_remove = disc_weights[disc]
         break
 
-  if unbalanced_disk == None:
+  if unbalanced_disc == None:
     unknown_weight_subtowers.pop(disc_to_remove)
     subtower_weights[disc_to_remove] = weight_to_remove
     for disc in unknown_weight_subtowers:
@@ -51,7 +51,7 @@ while True:
         unknown_weight_subtowers[disc].remove(disc_to_remove)
         known_weight_subtowers[disc].append(weight_to_remove)
   else:
-    for disc in original_subtowers[unbalanced_disk]:
+    for disc in original_subtowers[unbalanced_disc]:
       if subtower_weights[disc] != reference_weight:
         print disc_weights[disc] + reference_weight - subtower_weights[disc]
     break
