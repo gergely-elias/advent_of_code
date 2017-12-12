@@ -30,4 +30,3 @@ for block_index in range(16):
     xor_result ^= number
   hash_digits.append(('0' + hex(xor_result)[2:])[-2:])
 print ''.join(hash_digits)
-

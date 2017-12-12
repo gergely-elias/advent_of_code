@@ -25,4 +25,3 @@ while True:
       if current_field_value == limit:
         print sum([abs(position[i] - start_position[i]) for i in range(2)])
         exit()
-

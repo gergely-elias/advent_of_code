@@ -14,4 +14,3 @@ while offset >= 0 and offset < len(message):
   offset += jump
   number_of_jumps += 1
 print number_of_jumps
-

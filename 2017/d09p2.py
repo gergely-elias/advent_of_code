@@ -15,4 +15,3 @@ line = re.sub(garbage_regexp, '', line)
 length_without_garbage = len(line)
 
 print length_with_garbage - length_without_garbage - 2 * number_of_garbages
-

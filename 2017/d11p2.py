@@ -26,4 +26,3 @@ for direction in line:
   maximal_distance = max(maximal_distance, max([abs(coordinate) for coordinate in cube_coordinate]))
 print maximal_distance
 
-

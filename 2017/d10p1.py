@@ -22,4 +22,3 @@ for length in lengths:
   skip_size += 1
 
 print number_list[0] * number_list[1]
-

@@ -12,7 +12,7 @@ known_weight_subtowers = {}
 for line in input_lines:
   line = line.strip()
   line = re.findall('\w+', line)
-  
+
   disc = line[0]
   weight = int(line[1])
   disc_weights[disc] = weight
@@ -55,6 +55,3 @@ while True:
       if subtower_weights[disc] != reference_weight:
         print disc_weights[disc] + reference_weight - subtower_weights[disc]
     break
-  
-
-

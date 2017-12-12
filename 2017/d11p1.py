@@ -24,4 +24,3 @@ for direction in line:
     cube_coordinate[0] += 1
 print max([abs(coordinate) for coordinate in cube_coordinate])
 
-

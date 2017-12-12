@@ -29,4 +29,3 @@ while True:
       if current_field_value > limit:
         print current_field_value
         exit()
-

@@ -40,4 +40,3 @@ while misweighted_discs:
       break
 
 print disc_properties[unbalanced_disc]['self_weight'] - weight_difference
-
