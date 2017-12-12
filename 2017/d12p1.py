@@ -21,4 +21,3 @@ while len(connected) > 0:
       connected.add(neighbour)
 
 print len(group)
-

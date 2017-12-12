@@ -25,4 +25,3 @@ while len(remaining_ids) > 0:
   number_of_groups += 1
 
 print number_of_groups
-

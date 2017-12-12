@@ -14,4 +14,3 @@ for line in input_lines:
   groups.append(program_ids)
 
 print len(groups)
-
