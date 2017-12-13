@@ -3,8 +3,7 @@ input_lines = input_file.readlines()
 
 import re
 
-total_depth = int(re.findall('\d+', input_lines[-1])[0]) + 1
-ranges = [0 for x in range(total_depth)]
+ranges = {}
 
 for line in input_lines:
   line = line.strip()
@@ -13,11 +12,13 @@ for line in input_lines:
 
 delay = -1
 caught = True
+
 while caught:
   delay += 1
   caught = False
-  for depth in range(total_depth):
-    if ranges[depth] > 0 and (depth + delay) % (2 * ranges[depth] - 2) == 0:
+  for depth in ranges:
+    if (depth + delay) % (2 * ranges[depth] - 2) == 0:
       caught = True
       break
+
 print delay
