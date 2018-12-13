@@ -1,0 +1,50 @@
+no big trick in this problem, just simulate the carts running
+the key of this problem is representation
+
+read the map and store it in a dict, for which the key is the (x,y) coordinate-pair
+at the positions of each cart, replace the cart with the underlying road, which can be easily determined using which direction the cart goes
+
+each cart has 3 important characteristic:
+  its position - an (x,y) coordinate-pair
+  its direction - represented by a number (0: <, 1: ^, 2: >, 3: v)
+  its turn phase, i.e. at the next intersection, which direction will it turn - represented by a number as well (0: left, 1: straight, 2: right)
+  initial positions and directions are given by the map, turn phase is 0 for all the carts
+
+at each intersection, the turn phase is increased, and if it reaches 3, reset back to 0 (x -> x+1 mod 3)
+
+the directions at corners and intersections are changing according to the following rules:
+  original direction      <   ^   >   v
+  corner of shape /       v   >   ^   <
+  corner of shape \       ^   <   v   >
+  left turn at +          v   <   ^   >
+  straight at +           <   ^   >   v
+  right turn at +         ^   >   v   <
+
+if we convert these to their number representation, they turn into:
+  original direction      0   1   2   3
+  corner of shape /       3   2   1   0
+  corner of shape \       1   0   3   2
+  left turn at +          3   0   1   2
+  straight at +           0   1   2   3
+  right turn at +         1   2   3   0
+
+or, in general:
+  original direction                  x
+  corner of shape /                 3-x
+  corner of shape \           1-x mod 4
+  left turn at +              x-1 mod 4
+  straight at +                       x
+  right turn at +             x+1 mod 4
+
+we can even combine the last three using the turn phase:
+  turn phase 0 at +           x-1 mod 4
+  turn phase 1 at +                   x
+  turn phase 2 at +           x+1 mod 4
+
+becomes:
+  turn phase y at +         x+y-1 mod 4
+
+these operations allow efficient simulation
+
+there needs some care to be taken in the carts making their moves in the proper order
+after every tick they have to be sorted based on their current position
