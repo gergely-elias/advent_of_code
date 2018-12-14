@@ -22,4 +22,4 @@ def count_digits(current_num):
 k = input_num
 for i in range(50):
   k = count_digits(k)
-  print i, len(k)
+print len(k)
