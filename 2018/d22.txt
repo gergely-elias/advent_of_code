@@ -1,0 +1,30 @@
+using a graph representation of (coordinates, equipment) tuples
+it reduces the problem to a shortest path algorithm
+
+a small trick using symmetries of region type and equipment:
+if we code types as the problem statement does:
+ 0: rocky
+ 1: wet
+ 2: narrow
+and number the equipment as:
+ 0: neither
+ 1: torch
+ 2: climbing gear
+then the followings hold:
+ for any region with type of code x:
+  the 'forbidden' equipment also has code x
+  that is, we can add the edge between (coords, (x+1) mod 3) and (coords, (x+2) mod 3) to our graph with weight 7
+  (meaning a 7-minute equipment change at the given region)
+ if two neighbouring regions have the same type of code x:
+  the only 'forbidden' equipment is the one with code x
+  so we can add two edges - both with weight 1:
+   the one between (coords of first region, (x+1) mod 3) and (coords of second region, (x+1) mod 3), and
+   the one between (coords of first region, (x+1) mod 3) and (coords of second region, (x+1) mod 3)
+ if two neighbouring regions have different types x and y:
+  there is only one type of equipment which we can carry between them
+  as the codes of equipment are all unique, and sum up to 3, the only allowed equipment's code can be calculated as 3-(x+y)
+  so the edge we add is between (coords of first region, 3-(x+y)) and (coords of second region, 3-(x+y)), having weight 1
+
+as the shortest path might reach regions beyond the target, the shortest path algorithm is ran twice
+once in the original rectangle, to provide an upper bound on the length of the shortest path
+this also gives an upper bound for how far beyond the target we should look for regions that might be on the shortest path
