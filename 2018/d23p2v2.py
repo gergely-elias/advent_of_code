@@ -5,54 +5,37 @@ import re
 import math
 import itertools
 
-nanobots = []
-for line in input_lines:
-  nanobot = map(int, re.findall('-?\d+', line.strip()))
-  nanobots.append(nanobot)
-num_of_coords = len(nanobots[0]) - 1
+nanobots = [map(int, re.findall('-?\d+', line.strip())) for line in input_lines]
+dimension = len(nanobots[0]) - 1
 
-range_extrema = [[float("inf"), -float("inf")] for coord_index in range(num_of_coords)]
-for nanobot in nanobots:
-  for coord_index in range(num_of_coords):
-    range_extrema[coord_index][0] = min(range_extrema[coord_index][0], nanobot[coord_index] - nanobot[num_of_coords])
-    range_extrema[coord_index][1] = max(range_extrema[coord_index][1], nanobot[coord_index] + nanobot[num_of_coords])
-max_distance = max(range_extrema[coord_index][1] - range_extrema[coord_index][0] for coord_index in range(num_of_coords))
+range_extrema = [[min([nanobot[coord_index] - nanobot[dimension] for nanobot in nanobots]), max([nanobot[coord_index] + nanobot[dimension] for nanobot in nanobots])] for coord_index in range(dimension)]
+max_distance = max(range_extrema[coord_index][1] - range_extrema[coord_index][0] for coord_index in range(dimension))
 start_size = 2 ** int(math.ceil(math.log(max_distance, 2)))
 
 def smallest_coord_sum_in_cube(min_coords, cube_size):
-  smallest_coord_sum = 0
-  for coord_index in range(num_of_coords):
-    if min_coords[coord_index] * (min_coords[coord_index] + cube_size) > 0:
-      smallest_coord_sum += min(min_coords[coord_index], min_coords[coord_index] + cube_size)
-  return smallest_coord_sum
+  return sum([min(abs(min_coords[coord_index]), abs(min_coords[coord_index] + cube_size)) for coord_index in range(dimension) if min_coords[coord_index] * (min_coords[coord_index] + cube_size) > 0])
 
 def is_in_range(point, bot, extra_distance):
-  dist = 0
-  for coord in range(num_of_coords):
-    dist += abs(point[coord] - bot[coord])
-  return dist <= bot[num_of_coords] + extra_distance
+  return sum([abs(point[coord_index] - bot[coord_index]) for coord_index in range(dimension)]) <= bot[dimension] + extra_distance
 
 def has_intersection(nanobot, min_coords, cube_size):
   corner_center_axis_distance = (cube_size - 1) * 0.5
   cube_center = [coord + corner_center_axis_distance for coord in min_coords]
-  return is_in_range(cube_center, nanobot, num_of_coords * corner_center_axis_distance)
+  return is_in_range(cube_center, nanobot, dimension * corner_center_axis_distance)
 
 def count_intersecting_ranges(min_coords, cube_size):
-  count = 0
-  for nanobot in nanobots:
-    if has_intersection(nanobot, min_coords, cube_size):
-      count += 1
-  return count
+  return sum([has_intersection(nanobot, min_coords, cube_size) for nanobot in nanobots])
 
-cubes = [tuple([range_extrema[coord_index][0] for coord_index in range(num_of_coords)] + [start_size, len(nanobots), smallest_coord_sum_in_cube([range_extrema[coord_index][0] for coord_index in range(num_of_coords)], start_size)])]
+corner_coord = [range_extrema[coord_index][0] for coord_index in range(dimension)]
+cubes = [tuple(corner_coord + [start_size, len(nanobots), smallest_coord_sum_in_cube(corner_coord, start_size)])]
 while len(cubes) > 0:
-  cubes.sort(key = lambda job: (-job[num_of_coords + 1], job[num_of_coords + 2]))
+  cubes.sort(key = lambda cube: (-cube[dimension + 1], cube[dimension + 2], cube[dimension]))
   next_cube = cubes.pop(0)
-  if next_cube[num_of_coords] == 1:
-    print next_cube[num_of_coords + 2]
+  if next_cube[dimension] == 1:
+    print next_cube[dimension + 2]
     break
   else:
-    subcube_size = next_cube[num_of_coords] / 2
-    for subcube in itertools.product(*[range(2) for coord_index in range(num_of_coords)]):
-      corner_coord = [(corner_coord + axis_flag * subcube_size) for corner_coord, axis_flag in zip(next_cube[:num_of_coords], subcube)]
+    subcube_size = next_cube[dimension] / 2
+    for subcube in itertools.product(*[range(2) for coord_index in range(dimension)]):
+      corner_coord = [(big_cube_coord + axis_flag * subcube_size) for big_cube_coord, axis_flag in zip(next_cube[:dimension], subcube)]
       cubes.append(tuple(corner_coord + [subcube_size, count_intersecting_ranges(corner_coord, subcube_size), smallest_coord_sum_in_cube(corner_coord, subcube_size)]))
