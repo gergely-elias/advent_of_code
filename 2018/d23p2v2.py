@@ -56,4 +56,3 @@ while len(cubes) > 0:
     for subcube in itertools.product(*[range(2) for coord_index in range(num_of_coords)]):
       corner_coord = [(corner_coord + axis_flag * subcube_size) for corner_coord, axis_flag in zip(next_cube[:num_of_coords], subcube)]
       cubes.append(tuple(corner_coord + [subcube_size, count_intersecting_ranges(corner_coord, subcube_size), smallest_coord_sum_in_cube(corner_coord, subcube_size)]))
-smallest_coord_sum_in_cube

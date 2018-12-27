@@ -13,7 +13,7 @@ def process_literals(route_regexp, start_nodes):
       if character in direction_letters:
         direction = direction_coords[direction_letters.index(character)]
         neighbour_node = tuple(sum(coord) for coord in zip(direction, node))
-        G.add_edge(node, neighbour_node)
+        rooms.add_edge(node, neighbour_node)
         node = neighbour_node
         character_index += 1
     finish_nodes.append(node)
@@ -62,9 +62,9 @@ def split_on_the_highest_level(route_regexp, nodes):
   return list(next_nodes)
 
 start_node = (0, 0)
-G = networkx.Graph()
+rooms = networkx.Graph()
 direction_letters = ['N', 'E', 'S', 'W']
 direction_coords = [(-1, 0), (0, 1), (1, 0), (0, -1)]
 
 split_on_the_highest_level(input_lines[0].strip()[1 : -1], [start_node])
-print sum(distance >= 1000 for distance in networkx.shortest_path_length(G, source = start_node).values())
+print sum(distance >= 1000 for distance in networkx.shortest_path_length(rooms, source = start_node).values())

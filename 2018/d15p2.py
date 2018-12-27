@@ -54,7 +54,7 @@ def simulate_battle(elf_hit_points):
       all_opponents = filter(lambda creature: creature[2] == opponent_type[creature_on_turn[2]], creatures)
 
       squares_next_to_opponents = set([tuple([sum(coord) for coord in zip(opponent[:2], direction)]) for opponent in all_opponents for direction in directions])
-      open_squares = filter(lambda square: world_map[square[0]][square[1]]=='.', squares_next_to_opponents)
+      open_squares = filter(lambda square: world_map[square[0]][square[1]] == '.', squares_next_to_opponents)
       if tuple(creature_on_turn[:2]) in squares_next_to_opponents:
         open_squares.append(tuple(creature_on_turn[:2]))
       open_squares.sort(key = operator.itemgetter(*range(2)))

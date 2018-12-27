@@ -15,7 +15,7 @@ while True:
     scoreboard.extend([current_sum / 10, current_sum % 10])
     number_of_recipes += 2
     if scoreboard[-(lookup_length + 1) : -1] == lookup_value:
-      print number_of_recipes - 1 - lookup_length
+      print number_of_recipes - (lookup_length + 1)
       exit()
   else:
     scoreboard.append(current_sum)
