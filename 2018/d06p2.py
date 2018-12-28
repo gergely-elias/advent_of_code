@@ -9,15 +9,13 @@ coordinates = [tuple(map(int, re.findall('\d+', line))) for line in input_lines]
 num_of_coords = len(coordinates)
 
 threshold = 10000
-x_median = x_list[(num_of_coords-1)/2]
-y_median = y_list[(num_of_coords-1)/2]
 
 def partial_sums(coord_list):
   sum_at_min = sum(coord_list) - num_of_coords * coord_list[0]
-  range_min = coord_list[0] - (threshold - 1 - sum_at_min) / num_of_coords
+  range_min = coord_list[0] - (threshold - 1 - sum_at_min) // num_of_coords
 
   sum_at_max = num_of_coords * coord_list[-1] - sum(coord_list)
-  range_max = coord_list[-1] + (threshold - 1 - sum_at_max) / num_of_coords
+  range_max = coord_list[-1] + (threshold - 1 - sum_at_max) // num_of_coords
   return [sum([abs(coord - location) for coord in coord_list]) for location in range(range_min, range_max + 1)]
 
 x_sums = sorted(partial_sums(x_list))
@@ -33,4 +31,4 @@ while x_index < len(x_sums) and y_index >= 0:
   else:
     y_index -= 1
 
-print region_size
+print(region_size)

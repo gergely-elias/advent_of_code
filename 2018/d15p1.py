@@ -31,7 +31,7 @@ def breadth_first_search(coord):
       if world_map[y][x] == '.' or (y,x) == coord:
         distances[y][x] = distance_level
         for direction in directions:
-          neighbour_coord = [sum(coord) for coord in zip((y,x), direction)]
+          neighbour_coord = tuple(sum(coord) for coord in zip((y,x), direction))
           if neighbour_coord[0] in range(len(world_map)) and neighbour_coord[1] in range(len(world_map[neighbour_coord[0]])) and neighbour_coord not in processed:
             next_level.append(neighbour_coord)
             processed.append(neighbour_coord)
@@ -47,10 +47,10 @@ while num_of_elves > 0 and num_of_goblins > 0:
   creature_index = 0
   while creature_index < len(creatures):
     creature_on_turn = creatures[creature_index]
-    all_opponents = filter(lambda creature: creature[2] == opponent_type[creature_on_turn[2]], creatures)
+    all_opponents = list(filter(lambda creature: creature[2] == opponent_type[creature_on_turn[2]], creatures))
 
     squares_next_to_opponents = set([tuple([sum(coord) for coord in zip(opponent[:2], direction)]) for opponent in all_opponents for direction in directions])
-    open_squares = filter(lambda square: world_map[square[0]][square[1]] == '.', squares_next_to_opponents)
+    open_squares = list(filter(lambda square: world_map[square[0]][square[1]] == '.', squares_next_to_opponents))
     if tuple(creature_on_turn[:2]) in squares_next_to_opponents:
       open_squares.append(tuple(creature_on_turn[:2]))
     open_squares.sort(key = operator.itemgetter(*range(2)))
@@ -68,7 +68,7 @@ while num_of_elves > 0 and num_of_goblins > 0:
       while decreasing_distance_loop > 0:
         decreasing_distance_loop -= 1
         for direction in directions:
-          possible_next_on_path = [sum(coord) for coord in zip(backward_path_from_target[-1], direction)]
+          possible_next_on_path = tuple(sum(coord) for coord in zip(backward_path_from_target[-1], direction))
           if distances[possible_next_on_path[0]][possible_next_on_path[1]] == decreasing_distance_loop:
             backward_path_from_target.append(possible_next_on_path)
             break
@@ -77,10 +77,10 @@ while num_of_elves > 0 and num_of_goblins > 0:
       creature_on_turn = (backward_path_from_target[-2][0], backward_path_from_target[-2][1], creatures[creature_index][2], creatures[creature_index][3])
       creatures[creature_index] = creature_on_turn
 
-    attackable_opponents = filter(lambda opponent: sum([abs(coord1 - coord2) for coord1,coord2 in zip(opponent[:2], creature_on_turn[:2])]) == 1, all_opponents)
+    attackable_opponents = list(filter(lambda opponent: sum([abs(coord1 - coord2) for coord1,coord2 in zip(opponent[:2], creature_on_turn[:2])]) == 1, all_opponents))
     if len(attackable_opponents):
       minimal_hp = min([opponent[3] for opponent in attackable_opponents])
-      weakest_attackable_opponents = filter(lambda opponent: opponent[3] == minimal_hp, attackable_opponents)
+      weakest_attackable_opponents = list(filter(lambda opponent: opponent[3] == minimal_hp, attackable_opponents))
       weakest_attackable_opponents.sort(key = operator.itemgetter(*range(2)))
       opponent_to_attack = weakest_attackable_opponents[0]
       opponents_creature_index = creatures.index(opponent_to_attack)
@@ -97,8 +97,8 @@ while num_of_elves > 0 and num_of_goblins > 0:
         if opponents_creature_index < creature_index:
           creature_index -= 1
         if creature_index < len(creatures) - 1 and (num_of_elves == 0 or num_of_goblins == 0):
-          print turn * sum([creature[3] for creature in creatures])
+          print(turn * sum([creature[3] for creature in creatures]))
           exit()
     creature_index += 1
   turn += 1
-print turn * sum([creature[3] for creature in creatures])
+print(turn * sum([creature[3] for creature in creatures]))

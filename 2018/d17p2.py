@@ -14,8 +14,8 @@ max_x = -float("inf")
 min_y = float("inf")
 max_y = -float("inf")
 for line in input_lines:
-  coord_x = map(int, re.findall('\d+', re.findall('x=([\d\.]+)', line.strip())[0]))
-  coord_y = map(int, re.findall('\d+', re.findall('y=([\d\.]+)', line.strip())[0]))
+  coord_x = list(map(int, re.findall('\d+', re.findall('x=([\d\.]+)', line.strip())[0])))
+  coord_y = list(map(int, re.findall('\d+', re.findall('y=([\d\.]+)', line.strip())[0])))
   range_x = range(coord_x[0], coord_x[-1] + 1)
   range_y = range(coord_y[0], coord_y[-1] + 1)
   for x in range_x:
@@ -73,4 +73,4 @@ water_spring_coords = (0, 500)
 water_map[water_spring_coords] = '+'
 flow(*water_spring_coords)
 
-print [v for (y, x), v in water_map.items() if (y in range(min_y, max_y + 1))].count('~')
+print([v for (y, x), v in water_map.items() if (y in range(min_y, max_y + 1))].count('~'))

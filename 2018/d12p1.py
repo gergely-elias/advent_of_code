@@ -28,4 +28,4 @@ for step in range(generation):
     index_offset += 1
   state = next_state
   index_offset -= 1
-print plant_index_sum
+print(plant_index_sum)

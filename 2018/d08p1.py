@@ -3,7 +3,7 @@ input_lines = input_file.readlines()
 
 import re
 
-tree = map(int, re.findall('\d+', input_lines[0].strip()))
+tree = list(map(int, re.findall('\d+', input_lines[0].strip())))
 
 index = 0
 numbers_of_children = []
@@ -18,9 +18,9 @@ def parse():
   for child in range(numbers_of_children[-1]):
     parse()
   numbers_of_children.pop()
-  result_sum += sum(tree[index:index + metadata_lengths[-1]])
+  result_sum += sum(tree[index : index + metadata_lengths[-1]])
   index += metadata_lengths[-1]
   metadata_lengths.pop()
 
 parse()
-print result_sum
+print(result_sum)

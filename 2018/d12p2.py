@@ -31,7 +31,7 @@ while True:
     step_index_offset += 1
   step_index_offset -= 1
   if next_state == state:
-    print plant_index_sum + (total_generations - generation) * step_index_offset * state.count('#')
+    print(plant_index_sum + (total_generations - generation) * step_index_offset * state.count('#'))
     break
   state = next_state
   index_offset += step_index_offset

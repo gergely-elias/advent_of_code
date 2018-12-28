@@ -22,4 +22,4 @@ optimizer.add(distance == z3_abs(x) + z3_abs(y) + z3_abs(z))
 optimizer.maximize(number_of_bots_in_range)
 optimizer.minimize(distance)
 optimizer.check()
-print optimizer.model()[distance]
+print(optimizer.model()[distance])

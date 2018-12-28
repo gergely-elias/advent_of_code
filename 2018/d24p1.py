@@ -67,13 +67,13 @@ while not combat_over:
 
   all_groups.sort(key = lambda group: (-group['init']))
   for attacker_group in all_groups:
-    if target.has_key(attacker_group['init']):
+    if attacker_group['init'] in target:
       opponent_lookup = find_group_with_initiative(all_groups, target[attacker_group['init']])
       if opponent_lookup[0] > -1:
         defender_group = opponent_lookup[1]
         attack_type = attacker_group['attack_type']
         defender_group['damage_factor'] = calculate_damage_factor(defender_group, attack_type)
-        defender_group['units'] -= defender_group['damage_factor'] * attacker_group['power'] / defender_group['hp']
+        defender_group['units'] -= defender_group['damage_factor'] * attacker_group['power'] // defender_group['hp']
         defender_group['power'] = defender_group['units'] * defender_group['damage']
         if defender_group['units'] <= 0:
           opponents = [immune_system, infections][defender_group['class']]
@@ -82,4 +82,4 @@ while not combat_over:
           if len(opponents) == 0:
             combat_over = True
 
-print sum([i['units'] for i in all_groups])
+print(sum([i['units'] for i in all_groups]))

@@ -13,7 +13,7 @@ factors = collections.defaultdict(lambda: 0)
 possible_prime_divisor = 2
 while possible_prime_divisor ** 2 <= number_to_factorize:
   while number_to_factorize % possible_prime_divisor == 0:
-    number_to_factorize /= possible_prime_divisor
+    number_to_factorize //= possible_prime_divisor
     factors[possible_prime_divisor] += 1 
   possible_prime_divisor += 1
 if number_to_factorize > 1:
@@ -21,5 +21,5 @@ if number_to_factorize > 1:
 
 sum_of_divisors = 1
 for prime_factor in factors:
-  sum_of_divisors *= (prime_factor ** (factors[prime_factor] + 1) - 1) / (prime_factor - 1)
-print sum_of_divisors
+  sum_of_divisors *= (prime_factor ** (factors[prime_factor] + 1) - 1) // (prime_factor - 1)
+print(sum_of_divisors)

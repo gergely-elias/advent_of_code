@@ -78,13 +78,13 @@ def combat(boost):
 
     all_groups.sort(key = lambda group: (-group['init']))
     for attacker_group in all_groups:
-      if target.has_key(attacker_group['init']):
+      if attacker_group['init'] in target:
         opponent_lookup = find_group_with_initiative(all_groups, target[attacker_group['init']])
         if opponent_lookup[0] > -1:
           opponent = opponent_lookup[1]
           attack_type = attacker_group['attack_type']
           opponent['damage_factor'] = calculate_damage_factor(opponent, attack_type)
-          opponent['units'] -= opponent['damage_factor'] * attacker_group['power'] / opponent['hp']
+          opponent['units'] -= opponent['damage_factor'] * attacker_group['power'] // opponent['hp']
           opponent['power'] = opponent['units'] * opponent['damage']
           if opponent['units'] <= 0:
             opponents = [immune_system, infections][opponent['class']]
@@ -106,4 +106,4 @@ winner = 'unknown'
 while winner != 'immune system':
   boost += 1
   winner, units_survived = combat(boost)
-print units_survived
+print(units_survived)

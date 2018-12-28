@@ -41,4 +41,4 @@ for location_x in range(minx, maxx + 1):
   coordinates_with_infinite_areas.add(closest_coordinate[(maxy, location_x)])
 
 coordinates_with_finite_areas = {k: v for k, v in coordinate_areas.items() if k not in coordinates_with_infinite_areas and k != "tied"}
-print max(coordinates_with_finite_areas.values())
+print(max(coordinates_with_finite_areas.values()))

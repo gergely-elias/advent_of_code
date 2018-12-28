@@ -4,23 +4,16 @@ input_lines = input_file.readlines()
 import collections
 import re
 
-points = [map(int,re.findall('-?\d+', line.strip())) for line in input_lines]
+points = [list(map(int,re.findall('-?\d+', line.strip()))) for line in input_lines]
 
 time = 0
 min_text_height = float("inf")
 best_time = -1
 while True:
-  xmin = float("inf")
-  xmax = -float("inf")
-  ymin = float("inf")
-  ymax = -float("inf")
-  for point in points:
-    x = point[0] + point[2] * time
-    y = point[1] + point[3] * time
-    xmin = min(x, xmin)
-    xmax = max(x, xmax)
-    ymin = min(y, ymin)
-    ymax = max(y, ymax)
+  xmin = min([x_pos + x_vel * time for x_pos, y_pos, x_vel, y_vel in points])
+  xmax = max([x_pos + x_vel * time for x_pos, y_pos, x_vel, y_vel in points])
+  ymin = min([y_pos + y_vel * time for x_pos, y_pos, x_vel, y_vel in points])
+  ymax = max([y_pos + y_vel * time for x_pos, y_pos, x_vel, y_vel in points])
   if ymax - ymin < min_text_height:
     min_text_height = ymax - ymin
     best_time = time
@@ -29,21 +22,17 @@ while True:
   time += 1
 
 lattice = collections.defaultdict(lambda: " ")
-xmin = float("inf")
-xmax = -float("inf")
-ymin = float("inf")
-ymax = -float("inf")
-for point in points:
-  x = point[0] + point[2] * best_time
-  y = point[1] + point[3] * best_time
+xmin = min([x_pos + x_vel * best_time for x_pos, y_pos, x_vel, y_vel in points])
+xmax = max([x_pos + x_vel * best_time for x_pos, y_pos, x_vel, y_vel in points])
+ymin = min([y_pos + y_vel * best_time for x_pos, y_pos, x_vel, y_vel in points])
+ymax = max([y_pos + y_vel * best_time for x_pos, y_pos, x_vel, y_vel in points])
+for x_pos, y_pos, x_vel, y_vel in points:
+  x = x_pos + x_vel * best_time
+  y = y_pos + y_vel * best_time
   lattice[x,y] = "#"
-  xmin = min(x, xmin)
-  xmax = max(x, xmax)
-  ymin = min(y, ymin)
-  ymax = max(y, ymax)
 
 for y in range(ymin, ymax + 1):
   row = ""
   for x in range(xmin, xmax + 1):
     row += lattice[x,y]
-  print row
+  print(row)

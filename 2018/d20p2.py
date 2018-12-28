@@ -65,6 +65,7 @@ start_node = (0, 0)
 rooms = networkx.Graph()
 direction_letters = ['N', 'E', 'S', 'W']
 direction_coords = [(-1, 0), (0, 1), (1, 0), (0, -1)]
+threshold = 1000
 
 split_on_the_highest_level(input_lines[0].strip()[1 : -1], [start_node])
-print sum(distance >= 1000 for distance in networkx.shortest_path_length(rooms, source = start_node).values())
+print(sum(distance >= threshold for distance in networkx.shortest_path_length(rooms, source = start_node).values()))

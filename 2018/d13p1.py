@@ -45,7 +45,7 @@ while True:
     cart_next_position = tuple([change + pos for change,pos in zip(direction_coord_change[cart_direction], cart_position)])
 
     if cart_next_position in cart_positions:
-      print ','.join(map(str, cart_next_position))
+      print(','.join(map(str, cart_next_position)))
       exit()
 
     if map_of_tracks[cart_next_position] == '/':

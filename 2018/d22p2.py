@@ -52,6 +52,6 @@ for iteration in range(2):
 
   shortest_path_length = networkx.dijkstra_path_length(distance, source = (source_y, source_x, 1), target = (target_y, target_x, 1), weight = 'weight')
   previous_beyond_target = beyond_target
-  beyond_target = (shortest_path_length - target_x - target_y) / 2
+  beyond_target = (shortest_path_length - target_x - target_y) // 2
 
-print shortest_path_length
+print(shortest_path_length)

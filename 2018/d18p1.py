@@ -28,4 +28,4 @@ while current_minute < target_minute:
   landscape = next_landscape
   current_minute += 1
 
-print landscape.values().count(1) * landscape.values().count(2)
+print(list(landscape.values()).count(1) * list(landscape.values()).count(2))

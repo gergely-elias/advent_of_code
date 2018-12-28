@@ -2,7 +2,7 @@ input_file = open('inputd21.txt','r')
 input_lines = input_file.readlines()
 
 instruction_lines = [input_lines[line_index].strip() for line_index in range(1, len(input_lines))]
-variables = [map(int, instruction_line.split()[1:]) for instruction_line in instruction_lines]
+variables = [list(map(int, instruction_line.split()[1:])) for instruction_line in instruction_lines]
 
 init_helper = variables[6][1]
 init_element = variables[7][0]
@@ -19,7 +19,7 @@ while True:
   while True:
     element = (((element + (helper & bitmasks[0])) & bitmasks[1]) * factor) & bitmasks[2]
     if (helper >= threshold):
-      helper = helper / divisor
+      helper = helper // divisor
     else:
       break
   if element in list_of_elements:
@@ -27,4 +27,4 @@ while True:
   else:
     list_of_elements.append(element)
 
-print list_of_elements[-1]
+print(list_of_elements[-1])

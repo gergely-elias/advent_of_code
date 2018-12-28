@@ -5,7 +5,7 @@ import re
 import math
 import itertools
 
-nanobots = [map(int, re.findall('-?\d+', line.strip())) for line in input_lines]
+nanobots = [list(map(int, re.findall('-?\d+', line.strip()))) for line in input_lines]
 dimension = len(nanobots[0]) - 1
 
 range_extrema = [[min([nanobot[coord_index] - nanobot[dimension] for nanobot in nanobots]), max([nanobot[coord_index] + nanobot[dimension] for nanobot in nanobots])] for coord_index in range(dimension)]
@@ -32,10 +32,10 @@ while len(cubes) > 0:
   cubes.sort(key = lambda cube: (-cube[dimension + 1], cube[dimension + 2], cube[dimension]))
   next_cube = cubes.pop(0)
   if next_cube[dimension] == 1:
-    print next_cube[dimension + 2]
+    print(next_cube[dimension + 2])
     break
   else:
-    subcube_size = next_cube[dimension] / 2
+    subcube_size = next_cube[dimension] // 2
     for subcube in itertools.product(*[range(2) for coord_index in range(dimension)]):
       corner_coord = [(big_cube_coord + axis_flag * subcube_size) for big_cube_coord, axis_flag in zip(next_cube[:dimension], subcube)]
       cubes.append(tuple(corner_coord + [subcube_size, count_intersecting_ranges(corner_coord, subcube_size), smallest_coord_sum_in_cube(corner_coord, subcube_size)]))

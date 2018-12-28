@@ -19,4 +19,4 @@ for pair in itertools.combinations(points, 2):
   if dist(pair) <= 3:
     constellation.add_edge(*pair)
 
-print networkx.number_connected_components(constellation)
+print(networkx.number_connected_components(constellation))

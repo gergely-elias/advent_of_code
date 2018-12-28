@@ -8,7 +8,7 @@ while True:
     line = int(line.strip())
     freq += line
     if (freq in former_freqs):
-      print freq
+      print(freq)
       exit()
     else:
       former_freqs.add(freq)

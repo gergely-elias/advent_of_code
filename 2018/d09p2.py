@@ -36,4 +36,4 @@ for marble_on_turn in range(1, marbles + 1):
     prev_marble[next_marble[marble_in_position]] = marble_to_insert
     next_marble[marble_in_position] = marble_to_insert
 
-print max(scores)
+print(max(scores))

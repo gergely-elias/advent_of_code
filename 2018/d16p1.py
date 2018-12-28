@@ -43,12 +43,12 @@ def operate(instruction, registers, operator_index):
 line_index = 0
 result = 0
 while input_lines[line_index].startswith('B'):
-  registers_before_operation = map(int, re.findall('\d+', input_lines[line_index]))
-  instruction = map(int, re.findall('\d+', input_lines[line_index + 1]))
-  registers_after_operation = map(int, re.findall('\d+', input_lines[line_index + 2]))
+  registers_before_operation = list(map(int, re.findall('\d+', input_lines[line_index])))
+  instruction = list(map(int, re.findall('\d+', input_lines[line_index + 1])))
+  registers_after_operation = list(map(int, re.findall('\d+', input_lines[line_index + 2])))
 
   if [operate(instruction, copy.deepcopy(registers_before_operation), operator_index) for operator_index in range(16)].count(registers_after_operation) >= 3:
     result += 1
   line_index += 4
 
-print result
+print(result)

@@ -28,4 +28,4 @@ for y in range(target_y + 1):
     region_type[y, x] = erosion_level[y, x] % 3
     risk_level += region_type[y, x]
 
-print risk_level
+print(risk_level)

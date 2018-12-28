@@ -64,4 +64,4 @@ while len(cart_positions) > 1:
     cart_directions[sorted_cart_index] = cart_direction
     cart_turn_phases[sorted_cart_index] = cart_turn_phase
     sorted_cart_index += 1
-print ','.join(map(str, cart_positions[0]))
+print(','.join(map(str, cart_positions[0])))

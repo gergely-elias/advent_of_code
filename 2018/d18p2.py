@@ -29,8 +29,8 @@ while True:
   landscape = copy.deepcopy(next_landscape)
   if landscape in landscape_history:
     period = current_minute - landscape_history.index(landscape)
-    matching_landscape = landscape_history[target_minute - 1 - (target_minute - 1 - landscape_history.index(landscape)) / period * period]
-    print  matching_landscape.values().count(1) * matching_landscape.values().count(2)
+    matching_landscape = landscape_history[target_minute - 1 - (target_minute - 1 - landscape_history.index(landscape)) // period * period]
+    print(list(matching_landscape.values()).count(1) * list(matching_landscape.values()).count(2))
     break
   else:
     landscape_history.append(copy.deepcopy(landscape))

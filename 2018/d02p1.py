@@ -1,25 +1,16 @@
 input_file = open('inputd02.txt','r')
 input_lines = input_file.readlines()
 
+import collections
+
 count_2 = 0
 count_3 = 0
 for line in input_lines:
-  line = list(line.strip())
-  chars = {}
-  for char in line:
-    if char in chars:
-      chars[char] += 1
-    else:
-      chars[char] = 1
-  has_2 = False
-  has_3 = False
-  for i in chars:
-    if chars[i] == 2:
-      has_2 = True
-    elif chars[i] == 3:
-      has_3 = True
-  if has_2:
+  chars = collections.defaultdict(lambda: 0)
+  for char in list(line.strip()):
+    chars[char] += 1
+  if 2 in chars.values():
     count_2 += 1
-  if has_3:
+  if 3 in chars.values():
     count_3 += 1
-print count_2 * count_3
+print(count_2 * count_3)

@@ -3,19 +3,15 @@ input_lines = input_file.readlines()
 
 import re
 
-claims = [map(int, re.findall('\d+', line.strip())) for line in input_lines]
+claims = [list(map(int, re.findall('\d+', line.strip()))) for line in input_lines]
 
-size_x = 0
-size_y = 0
-for claim in claims:
-  [claim_id, x, y, w, h] = claim
-  size_x = max(size_x, x + w)
-  size_y = max(size_y, y + h)
+size_x = max([x + w for claim_id, x, y, w, h in claims])
+size_y = max([y + h for claim_id, x, y, w, h in claims])
 
 overlap_count = 0
 fabric_map = [[0 for i in range(size_x)] for j in range(size_y)]
 for claim in claims:
-  [claim_id, x, y, w, h] = claim
+  claim_id, x, y, w, h = claim
   for i in range(x, x + w):
     for j in range(y, y + h):
       if fabric_map[j][i] == 0:
@@ -24,4 +20,4 @@ for claim in claims:
         fabric_map[j][i] = -1
         overlap_count += 1
 
-print overlap_count
+print(overlap_count)

@@ -6,7 +6,7 @@ import sys
 
 sys.setrecursionlimit(5000)
 
-tree = map(int, re.findall('\d+', input_lines[0].strip()))
+tree = list(map(int, re.findall('\d+', input_lines[0].strip())))
 
 index = 0
 numbers_of_children = []
@@ -27,7 +27,7 @@ def parse():
     metadata_sum = sum(tree[index:index + metadata_lengths[-1]])
   else:
     metadata_sum = 0
-    for metadata_reference in [x - 1 for x in tree[index:index + metadata_lengths[-1]]]:
+    for metadata_reference in [x - 1 for x in tree[index : index + metadata_lengths[-1]]]:
       if metadata_reference < len(metadata_stack[-numbers_of_children[-1]:]):
         metadata_sum += metadata_stack[-numbers_of_children[-1]:][metadata_reference]
     del metadata_stack[-numbers_of_children[-1]:]
@@ -39,4 +39,4 @@ def parse():
   last_metadata_sum = metadata_stack[-1]
 
 parse()
-print last_metadata_sum
+print(last_metadata_sum)

@@ -10,7 +10,7 @@ guards_cumulated = collections.defaultdict(lambda: 0)
 sorted_input = sorted(input_lines)
 for line in sorted_input:
   line = line.strip()
-  timestamp = map(int, re.findall('\d+', line[:19]))
+  timestamp = list(map(int, re.findall('\d+', line[:19])))
   action = line[19:]
   if action[:5] == 'Guard':
     guard_id = int(re.findall('\d+', action)[0])
@@ -25,4 +25,4 @@ for line in sorted_input:
 sleepy_guard = max(guards_cumulated, key = lambda guard: guards_cumulated[guard])
 his_minutes = {minute: minutes_asleep[(guard, minute)] for (guard, minute) in minutes_asleep if guard == sleepy_guard}
 sleepy_minute = max(his_minutes, key = lambda minute: his_minutes[minute])
-print sleepy_guard * sleepy_minute 
+print(sleepy_guard * sleepy_minute)
