@@ -15,4 +15,4 @@ for depth in ranges:
   if depth % (2 * ranges[depth] - 2) == 0:
     severity += ranges[depth] * depth
 
-print severity
+print(severity)

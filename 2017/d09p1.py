@@ -20,4 +20,4 @@ for char in line:
   if char == '}':
     depth -=1
 
-print total_score
+print(total_score)

@@ -10,9 +10,9 @@ for line in input_lines:
   line = line.strip()
   line = re.findall('<[^>]*>', line)
   particle = {}
-  particle['position'] = map(int, re.findall('-?\d+', line[0]))
-  particle['velocity'] = map(int, re.findall('-?\d+', line[1]))
-  particle['acceleration'] = map(int, re.findall('-?\d+', line[2]))
+  particle['position'] = list(map(int, re.findall('-?\d+', line[0])))
+  particle['velocity'] = list(map(int, re.findall('-?\d+', line[1])))
+  particle['acceleration'] = list(map(int, re.findall('-?\d+', line[2])))
   particles.append(particle)
 
 for particle in particles:
@@ -32,4 +32,4 @@ for particle in particles:
   particle['position_size'] = sum(particle['position'])
 
 closest_particle = sorted(particles, key=operator.itemgetter('acceleration_size', 'velocity_size', 'position_size'))[0]
-print particles.index(closest_particle)
+print(particles.index(closest_particle))

@@ -12,7 +12,7 @@ def knot_hash(key):
   skip_size = 0
   for round in range(64):
     for length in lengths:
-      shifted_number_list = number_list[current_position:] + number_list[:current_position]
+      shifted_number_list = list(number_list[current_position:]) + list(number_list[:current_position])
       part_to_reverse = shifted_number_list[:length]
       part_not_to_reverse = shifted_number_list[length:]
       part_to_reverse.reverse()
@@ -33,4 +33,4 @@ def knot_hash(key):
   return ''.join(hash_digits)
 
 size = 128
-print sum([sum([int(digit) for digit in bin(int(knot_hash(word + '-' + str(row)),16))[2:].zfill(size)]) for row in range(size)])
+print(sum([sum([int(digit) for digit in bin(int(knot_hash(word + '-' + str(row)),16))[2:].zfill(size)]) for row in range(size)]))

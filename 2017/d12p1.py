@@ -20,4 +20,4 @@ while len(connected) > 0:
     if neighbour not in group and neighbour not in connected:
       connected.add(neighbour)
 
-print len(group)
+print(len(group))

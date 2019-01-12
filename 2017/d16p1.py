@@ -15,4 +15,4 @@ for move in line:
     k,l = map(order.index, move[1:].split('/'))
     order[k], order[l] = order[l], order[k]
 
-print ''.join(order)
+print(''.join(order))

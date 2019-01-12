@@ -15,4 +15,4 @@ for line in input_lines:
 
 for group in groups:
   if 0 in group:
-    print len(group)
+    print(len(group))

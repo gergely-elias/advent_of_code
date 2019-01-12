@@ -17,4 +17,4 @@ for number in search_range:
       break
   if is_prime == False:
     composite_numbers += 1
-print composite_numbers
+print(composite_numbers)

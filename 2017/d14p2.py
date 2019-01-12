@@ -12,7 +12,7 @@ def knot_hash(key):
   skip_size = 0
   for round in range(64):
     for length in lengths:
-      shifted_number_list = number_list[current_position:] + number_list[:current_position]
+      shifted_number_list = list(number_list[current_position:]) + list(number_list[:current_position])
       part_to_reverse = shifted_number_list[:length]
       part_not_to_reverse = shifted_number_list[length:]
       part_to_reverse.reverse()
@@ -56,4 +56,4 @@ for cell_neighbours in adjacency:
       groups.pop(i)
   groups.append(cell_neighbours)
 
-print len(groups)
+print(len(groups))

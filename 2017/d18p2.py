@@ -50,4 +50,4 @@ while not (program_state[0]['waiting_for_receive'] and program_state[1]['waiting
     program_state[program_id]['instruction_index'] += 1
   program_id = 1 - program_id
 
-print count_of_messages
+print(count_of_messages)

@@ -3,7 +3,7 @@ input_lines = input_file.readlines()
 
 import collections
 
-init_grid_radius = (len(input_lines) - 1) / 2
+init_grid_radius = (len(input_lines) - 1) // 2
 grid_state = collections.defaultdict(lambda: 0)
 
 for iy,line in enumerate(input_lines):
@@ -23,4 +23,4 @@ for step in range(10000000):
   if grid_state[(y, x)] == 2:
     infection_count += 1
   x, y = map(sum, zip((x, y), neighbour_offsets[direction]))
-print infection_count
+print(infection_count)

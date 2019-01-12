@@ -12,9 +12,9 @@ for line in input_lines:
   line = line.strip()
   line = re.findall('<[^>]*>', line)
   particle = {}
-  particle['position'] = map(int, re.findall('-?\d+', line[0]))
-  particle['velocity'] = map(int, re.findall('-?\d+', line[1]))
-  particle['acceleration'] = map(int, re.findall('-?\d+', line[2]))
+  particle['position'] = list(map(int, re.findall('-?\d+', line[0])))
+  particle['velocity'] = list(map(int, re.findall('-?\d+', line[1])))
+  particle['acceleration'] = list(map(int, re.findall('-?\d+', line[2])))
   particles.append(particle)
 
 possible_collision_ticks = set()
@@ -38,10 +38,10 @@ for tick in ordered_possible_collision_ticks:
   particles_at_position = collections.defaultdict(lambda: [])
   for particle_index in not_collided_particles:
     particle = particles[particle_index]
-    particle_position = tuple([particle['position'][coordinate_index] + particle['velocity'][coordinate_index] * tick + particle['acceleration'][coordinate_index] * tick * (tick + 1) / 2 for coordinate_index in range(3)])
+    particle_position = tuple([particle['position'][coordinate_index] + particle['velocity'][coordinate_index] * tick + particle['acceleration'][coordinate_index] * tick * (tick + 1) // 2 for coordinate_index in range(3)])
     particles_at_position[particle_position].append(particles.index(particle))
   for position in particles_at_position:
     collided = particles_at_position[position]
     if len(collided) > 1:
       not_collided_particles = not_collided_particles.difference(set(collided))
-print len(not_collided_particles)
+print(len(not_collided_particles))

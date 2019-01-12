@@ -21,4 +21,4 @@ while caught:
       caught = True
       break
 
-print delay
+print(delay)

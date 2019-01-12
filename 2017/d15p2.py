@@ -11,7 +11,7 @@ compare_modulus = 2 ** digits_to_compare
 
 number_of_matches = 0
 steps = 5000000
-iteration_function = lambda (value, factor): value * factor % remainder_modulus
+iteration_function = lambda value_factor_pair: value_factor_pair[0] * value_factor_pair[1] % remainder_modulus
 mandatory_divisor = [4, 8]
 
 for step in range(steps):
@@ -23,4 +23,4 @@ for step in range(steps):
 
   if values[0] % compare_modulus == values[1] % compare_modulus:
     number_of_matches += 1
-print number_of_matches
+print(number_of_matches)

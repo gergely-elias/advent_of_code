@@ -21,4 +21,4 @@ while y in range(len(input_lines)) and x in range(len(input_lines[y])) and input
   x += neighbour_offsets[direction][0]
   y += neighbour_offsets[direction][1]
 
-print letters_along_path
+print(letters_along_path)

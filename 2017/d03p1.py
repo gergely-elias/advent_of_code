@@ -23,5 +23,5 @@ while True:
       position[coordinate_axis] = position[coordinate_axis] + (1 if coordinates_increasing else -1)
       field[position[0]][position[1]] = current_field_value
       if current_field_value == limit:
-        print sum([abs(position[i] - start_position[i]) for i in range(2)])
+        print(sum([abs(position[i] - start_position[i]) for i in range(2)]))
         exit()

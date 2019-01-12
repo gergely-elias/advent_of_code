@@ -11,7 +11,7 @@ lengths += [17, 31, 73, 47, 23]
 skip_size = 0
 for round in range(64):
   for length in lengths:
-    shifted_number_list = number_list[current_position:] + number_list[:current_position]
+    shifted_number_list = list(number_list[current_position:]) + list(number_list[:current_position])
     part_to_reverse = shifted_number_list[:length]
     part_not_to_reverse = shifted_number_list[length:]
     part_to_reverse.reverse()
@@ -29,4 +29,4 @@ for block_index in range(16):
   for number in block:
     xor_result ^= number
   hash_digits.append(('0' + hex(xor_result)[2:])[-2:])
-print ''.join(hash_digits)
+print(''.join(hash_digits))

@@ -13,4 +13,4 @@ while offset >= 0 and offset < len(message):
   message[offset] += 1
   offset += jump
   number_of_jumps += 1
-print number_of_jumps
+print(number_of_jumps)

@@ -22,4 +22,4 @@ for direction in line:
   elif direction == 'se':
     cube_coordinate[2] += -1
     cube_coordinate[0] += 1
-print max([abs(coordinate) for coordinate in cube_coordinate])
+print(max([abs(coordinate) for coordinate in cube_coordinate]))

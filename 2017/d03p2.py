@@ -27,5 +27,5 @@ while True:
                           + field[position[0] + 1][position[1] + 1]
       field[position[0]][position[1]] = current_field_value
       if current_field_value > limit:
-        print current_field_value
+        print(current_field_value)
         exit()

@@ -9,9 +9,9 @@ for line in input_lines:
   for i1,x1 in enumerate(numbers_on_line):
     for i2,x2 in enumerate(numbers_on_line):
       if i1 != i2 and x1 % x2 == 0:
-        checksum += x1 / x2
+        checksum += x1 // x2
         numbers_on_line_found = True
         break
     if numbers_on_line_found:
       break
-print checksum
+print(checksum)

@@ -46,4 +46,4 @@ for i in range(steps):
   tile_size = 2 + len(image) % 2
   image = merge(enhance(segment(image, tile_size)))
 
-print ''.join(image).count('#')
+print(''.join(image).count('#'))

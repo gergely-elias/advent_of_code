@@ -25,10 +25,10 @@ modulo_list.sort()
 main_modulo = 1
 possible_remainders = range(1)
 for current_modulo in modulo_list:
-  lcm = main_modulo * current_modulo / gcd(main_modulo, current_modulo)
+  lcm = main_modulo * current_modulo // gcd(main_modulo, current_modulo)
   possible_remainders_lcm = [x + y for x in range(0, lcm, main_modulo) for y in possible_remainders]
 
   possible_remainders = [x for x in possible_remainders_lcm if x % current_modulo not in forbidden_delays[current_modulo]]
   main_modulo = lcm
 
-print possible_remainders[0]
+print(possible_remainders[0])

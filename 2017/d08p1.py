@@ -18,4 +18,4 @@ maximal_register = float("-inf")
 for register in registers:
   if registers[register] > maximal_register:
     maximal_register = registers[register]
-print maximal_register
+print(maximal_register)

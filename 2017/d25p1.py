@@ -37,5 +37,5 @@ for step in range(steps):
 checksum = 0
 for reg in tape:
   checksum += tape[reg]
-print checksum
+print(checksum)
 

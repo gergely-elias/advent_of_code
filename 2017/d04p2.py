@@ -12,4 +12,4 @@ for line in input_lines:
   number_of_unique_anagrams = len(unique_anagrams)
   if number_of_words == number_of_unique_anagrams:
     number_of_valid_phrases += 1
-print number_of_valid_phrases
+print(number_of_valid_phrases)

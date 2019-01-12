@@ -10,4 +10,4 @@ for line in input_lines:
   base_discs.add(discs[0])
   subtower_discs.update(discs[1:])
 
-print list(base_discs.difference(subtower_discs))[0]
+print(list(base_discs.difference(subtower_discs))[0])

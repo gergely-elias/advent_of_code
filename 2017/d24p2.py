@@ -3,7 +3,7 @@ input_lines = input_file.readlines()
 
 import re
 
-edges = [map(int, re.findall('\d+', line.strip())) for line in input_lines]
+edges = [list(map(int, re.findall('\d+', line.strip()))) for line in input_lines]
 
 def trackback_edges(path, edges_left):
   vertices_left = set()
@@ -19,4 +19,4 @@ def trackback_edges(path, edges_left):
         yield longer_path
 
 max_bridge_length = max(len(bridge) for bridge in trackback_edges([0], edges))
-print max(2 * sum(bridge) - bridge[-1] for bridge in trackback_edges([0], edges) if len(bridge) == max_bridge_length)
+print(max(2 * sum(bridge) - bridge[-1] for bridge in trackback_edges([0], edges) if len(bridge) == max_bridge_length))

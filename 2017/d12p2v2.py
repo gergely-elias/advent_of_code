@@ -13,4 +13,4 @@ for line in input_lines:
       groups.pop(i)
   groups.append(program_ids)
 
-print len(groups)
+print(len(groups))

@@ -23,4 +23,4 @@ order = dance(initial_order)
 while order != initial_order:
   perms.append(order)
   order = dance(order)
-print ''.join(perms[1000000000 % len(perms)])
+print(''.join(perms[1000000000 % len(perms)]))

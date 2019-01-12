@@ -53,5 +53,5 @@ while True:
   else:
     for disc in original_subtowers[unbalanced_disc]:
       if subtower_weights[disc] != reference_weight:
-        print disc_weights[disc] + reference_weight - subtower_weights[disc]
+        print(disc_weights[disc] + reference_weight - subtower_weights[disc])
     break

@@ -10,7 +10,7 @@ lengths = [int(x) for x in line.split(',')]
 skip_size = 0
 
 for length in lengths:
-  shifted_number_list = number_list[current_position:] + number_list[:current_position]
+  shifted_number_list = list(number_list[current_position:]) + list(number_list[:current_position])
   part_to_reverse = shifted_number_list[:length]
   part_not_to_reverse = shifted_number_list[length:]
   part_to_reverse.reverse()
@@ -21,4 +21,4 @@ for length in lengths:
   current_position %= n
   skip_size += 1
 
-print number_list[0] * number_list[1]
+print(number_list[0] * number_list[1])

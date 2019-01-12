@@ -18,4 +18,4 @@ for line in input_lines:
   for register in registers:
     if registers[register] > maximal_register:
       maximal_register = registers[register]
-print maximal_register
+print(maximal_register)

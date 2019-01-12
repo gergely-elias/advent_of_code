@@ -39,4 +39,4 @@ while misweighted_discs:
       misweighted_discs = True
       break
 
-print disc_properties[unbalanced_disc]['self_weight'] - weight_difference
+print(disc_properties[unbalanced_disc]['self_weight'] - weight_difference)

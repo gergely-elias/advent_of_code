@@ -28,4 +28,4 @@ while instruction_index in range(0, len(instructions)):
     continue
   instruction_index += 1
 
-print number_of_mul_instructions
+print(number_of_mul_instructions)

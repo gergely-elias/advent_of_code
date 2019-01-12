@@ -34,4 +34,4 @@ while instruction_index in range(0, len(instructions)):
     last_sound_played = substitute(instruction[1])
   instruction_index += 1
 
-print last_sound_played
+print(last_sound_played)

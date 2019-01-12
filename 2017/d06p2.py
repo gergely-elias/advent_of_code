@@ -16,4 +16,4 @@ while tuple(blocks) not in states_already_seen:
   for j in range(maximal_value):
     blocks[(maximal_position + 1 + j) % len(blocks)] += 1
 
-print state_counter - states_already_seen[tuple(blocks)]
+print(state_counter - states_already_seen[tuple(blocks)])
