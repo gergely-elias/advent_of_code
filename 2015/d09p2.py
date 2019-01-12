@@ -22,4 +22,4 @@ for city_order in all_city_permutations:
     current_total_distance += distances[city_order[i]][city_order[i + 1]]
   if current_total_distance > max_total_distance:
     max_total_distance = current_total_distance
-print max_total_distance
+print(max_total_distance)

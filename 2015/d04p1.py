@@ -1,13 +1,15 @@
+input_file = open('inputd04.txt','r')
+input_lines = input_file.readlines()
+
 import hashlib
 
-secret_key = 'iwrupvqb'
+secret_key = input_lines[0].strip()
 
-i=0
-
+i = 0
 while True:
   i += 1
   hashable = secret_key + str(i)
-  hashresult = hashlib.md5(hashable).hexdigest()
+  hashresult = hashlib.md5(hashable.encode('utf-8')).hexdigest()
   if hashresult[:5] == '00000':
-    print hashable, hashresult
+    print(hashable[8:])
     break

@@ -20,5 +20,4 @@ for word in input_lines:
       break
   if second_criterium_fulfilled:
     good_words +=1
-print good_words
-
+print(good_words)

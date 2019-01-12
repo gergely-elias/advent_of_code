@@ -8,6 +8,4 @@ for character in input_lines[0]:
     number_of_ups += 1
   elif character == ')':
     number_of_downs += 1
-print number_of_ups - number_of_downs
-    
-
+print(number_of_ups - number_of_downs)

@@ -8,4 +8,4 @@ for line in input_lines:
   for char in line:
     if char == '\\' or char == '\"':
       character_count_difference += 1
-print character_count_difference
+print(character_count_difference)

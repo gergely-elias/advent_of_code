@@ -27,5 +27,4 @@ for character in input_lines[0]:
   current_positions[santa_index] = (current_x, current_y)
   houses_visited.add(current_positions[santa_index]) 
 
-print len(houses_visited)
-
+print(len(houses_visited))

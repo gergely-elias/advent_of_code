@@ -19,5 +19,4 @@ for character in input_lines[0]:
   current_position = (current_x, current_y)
   houses_visited.add(current_position) 
 
-print len(houses_visited)
-
+print(len(houses_visited))

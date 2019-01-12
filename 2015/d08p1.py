@@ -26,4 +26,4 @@ for line in input_lines:
       if (char >= '0' and char <= '9') or (char >= 'a' and char <= 'f'):
         character_count_difference += 3
     state = "none"
-print character_count_difference
+print(character_count_difference)

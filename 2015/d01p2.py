@@ -9,7 +9,5 @@ for character in input_lines[0]:
   elif character == ')':
     number_of_downs += 1
   if number_of_downs > number_of_ups:
-    print number_of_ups + number_of_downs
+    print(number_of_ups + number_of_downs)
     exit()
-    
-
