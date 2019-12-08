@@ -4,11 +4,13 @@ input_lines = input_file.readlines()
 program = list(map(int, input_lines[0].split(',')))
 
 opcode_length = {}
+for operation in [99]:
+  opcode_length[operation] = 1
 for operation in [3, 4]:
   opcode_length[operation] = 2
 for operation in [5, 6]:
   opcode_length[operation] = 3
-for operation in [1, 2, 7, 8, 99]:
+for operation in [1, 2, 7, 8]:
   opcode_length[operation] = 4 
 
 addressable_length = {}
@@ -26,7 +28,7 @@ while position < len(program):
   mode_indicators = [(operation_with_mode_bits // (10 ** decimal_place)) % 10 for decimal_place in [2,3,4]]
   opcode_parameters = program[position + 1 : position + opcode_length[operation]]
   address = [program[opcode_parameters[index]] if mode_indicators[index] == 0 else opcode_parameters[index] for index in range(addressable_length[operation])]
-  last_parameter = opcode_parameters[-1]
+  last_parameter = opcode_parameters[-1] if len(opcode_parameters) > 0 else None
 
   if operation == 1:
     program[last_parameter] = address[0] + address[1]
