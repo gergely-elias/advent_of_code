@@ -3,29 +3,17 @@ input_lines = input_file.readlines()
 
 program = list(map(int, input_lines[0].split(',')))
 
-number_of_parameters = {}
-for operation in [99]:
-  number_of_parameters[operation] = 0
-for operation in [3, 4]:
-  number_of_parameters[operation] = 1
-for operation in [1, 2]:
-  number_of_parameters[operation] = 3 
+operation_scheme = {
+  1: 'rrw',
+  2: 'rrw',
+  3: 'w',
+  4: 'r',
+  99: ''
+}
 
-addressable_length = {}
-for operation in [3, 99]:
-  addressable_length[operation] = 0
-for operation in [4]:
-  addressable_length[operation] = 1
-for operation in [1, 2]:
-  addressable_length[operation] = 2
-
-write_parameter_index = {}
-for operation in [4, 99]:
-  write_parameter_index[operation] = None
-for operation in [3]:
-  write_parameter_index[operation] = 0
-for operation in [1, 2]:
-  write_parameter_index[operation] = 2
+number_of_parameters = {op: len(operation_scheme[op]) for op in operation_scheme}
+addressable_length = {op: operation_scheme[op].count('r') for op in operation_scheme}
+write_parameter_index = {op: operation_scheme[op].index('w') if 'w' in operation_scheme[op] else None for op in operation_scheme}
 
 position = 0
 while position < len(program):
