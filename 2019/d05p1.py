@@ -16,6 +16,7 @@ addressable_length = {op: operation_scheme[op].count('r') for op in operation_sc
 write_parameter_index = {op: operation_scheme[op].index('w') if 'w' in operation_scheme[op] else None for op in operation_scheme}
 
 position = 0
+outputs = []
 while position < len(program):
   operation_with_mode_indicators = program[position]
   operation = operation_with_mode_indicators % 100
@@ -33,10 +34,11 @@ while position < len(program):
     input_parameter = 1
     program[write_parameter_address] = input_parameter
   elif operation == 4:
-    output_parameter = address[0]
-    if output_parameter != 0:
-      print(output_parameter)
+    outputs.append(address[0])
   else:
     assert(operation == 99)
     break
   position += number_of_parameters[operation] + 1
+
+assert(set(outputs[:-1]) == {0})
+print(outputs[-1])

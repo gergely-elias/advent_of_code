@@ -50,8 +50,7 @@ for phase_setting_sequence in itertools.permutations(range(5)):
         program[write_parameter_address] = input_parameter
       elif operation == 4:
         output_parameter = address[0]
-        if output_parameter != 0:
-          signal_to_transmit = output_parameter
+        signal_to_transmit = output_parameter
       elif operation == 5:
         if address[0] != 0:
           position = address[1]
