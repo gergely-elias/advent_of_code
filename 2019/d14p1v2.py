@@ -21,23 +21,13 @@ for line_index in range(len(input_lines)):
     reaction_amount[input_chemical] = input_chemical_amount
   reaction_amounts[output_chemical] = reaction_amount
 
-target = 1000000000000
-step = 2 ** math.ceil(math.log(target, 2))
-guess = step
-while step > 0:
-  step = step // 2
-  ingredients = {'FUEL': guess}
-  chemicals = list(networkx.topological_sort(dependencies))
-  while len(chemicals):
-    chemical = chemicals.pop()
-    for input_chemical in dependencies.predecessors(chemical):
-      if input_chemical not in ingredients:
-        ingredients[input_chemical] = 0
-      ingredients[input_chemical] += math.ceil(ingredients[chemical] / reaction_amounts[chemical][chemical]) * reaction_amounts[chemical][input_chemical]
+ingredients = {'FUEL': 1}
+chemicals = list(networkx.topological_sort(dependencies))
+while len(chemicals):
+  chemical = chemicals.pop()
+  for input_chemical in dependencies.predecessors(chemical):
+    if input_chemical not in ingredients:
+      ingredients[input_chemical] = 0
+    ingredients[input_chemical] += math.ceil(ingredients[chemical] / reaction_amounts[chemical][chemical]) * reaction_amounts[chemical][input_chemical]
 
-  if ingredients['ORE'] <= target:
-    guess += step
-  else:
-    guess -= step
-
-print(guess - (0 if ingredients['ORE'] <= target else 1))
+print(ingredients['ORE'])
