@@ -1,4 +1,4 @@
-input_file = open('inputd03.txt','r')
+input_file = open("inputd03.txt", "r")
 input_lines = input_file.readlines()
 
 limit = int(input_lines[0].strip())
