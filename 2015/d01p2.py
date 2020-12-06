@@ -1,5 +1,6 @@
-input_file = open("inputd01.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 number_of_ups = 0
 number_of_downs = 0

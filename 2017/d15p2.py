@@ -1,7 +1,7 @@
-input_file = open("inputd15.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
+
+input_lines = list(fileinput.input())
 
 values = [int(re.findall("\d+", line)[0]) for line in input_lines]
 factors = [16807, 48271]

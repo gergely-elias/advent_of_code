@@ -1,5 +1,6 @@
-input_file = open("inputd04.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 passports = " ".join([line.strip() for line in input_lines]).split("  ")
 

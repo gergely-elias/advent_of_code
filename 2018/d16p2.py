@@ -1,8 +1,8 @@
-input_file = open("inputd16.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import copy
+
+input_lines = list(fileinput.input())
 
 
 def operate(instruction, registers, operator_index):

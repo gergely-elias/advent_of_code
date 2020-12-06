@@ -1,7 +1,7 @@
-input_file = open("inputd08.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
+
+input_lines = list(fileinput.input())
 
 tree = list(map(int, re.findall("\d+", input_lines[0].strip())))
 

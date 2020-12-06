@@ -1,7 +1,7 @@
-input_file = open("inputd02.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
+
+input_lines = list(fileinput.input())
 
 
 def parse_line(line):

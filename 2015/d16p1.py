@@ -1,7 +1,7 @@
-input_file = open("inputd16.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
+
+input_lines = list(fileinput.input())
 
 sues = {}
 for line in input_lines:

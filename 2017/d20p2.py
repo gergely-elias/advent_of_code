@@ -1,10 +1,10 @@
-input_file = open("inputd20.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import itertools
 import numpy
 import collections
+
+input_lines = list(fileinput.input())
 
 particles = []
 

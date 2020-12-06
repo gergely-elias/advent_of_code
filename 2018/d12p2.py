@@ -1,7 +1,7 @@
-input_file = open("inputd12.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
+
+input_lines = list(fileinput.input())
 
 initial_state = "..." + re.findall("[#\.]+", input_lines[0].strip())[0] + "..."
 

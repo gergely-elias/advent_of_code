@@ -1,7 +1,7 @@
-input_file = open("inputd02.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import itertools
+
+input_lines = list(fileinput.input())
 
 for (line_1, line_2) in itertools.combinations(
     [line.strip() for line in input_lines], 2

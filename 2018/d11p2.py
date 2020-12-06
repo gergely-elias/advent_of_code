@@ -1,9 +1,10 @@
-input_file = open("inputd11.txt", "r")
-grid_id = int(input_file.readlines()[0])
-
-grid_size = 300
-
+import fileinput
 import collections
+
+input_lines = list(fileinput.input())
+
+grid_id = int(input_lines[0])
+grid_size = 300
 
 fuel_in_cell = collections.defaultdict(lambda: 0)
 sum_from_top_left_to_cell = collections.defaultdict(lambda: 0)

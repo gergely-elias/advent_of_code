@@ -1,5 +1,6 @@
-input_file = open("inputd04.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 number_of_valid_phrases = 0
 for line in input_lines:

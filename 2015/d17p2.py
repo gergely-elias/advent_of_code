@@ -1,8 +1,8 @@
-input_file = open("inputd17.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import copy
 import re
+
+input_lines = list(fileinput.input())
 
 number_of_containers = len(input_lines)
 total_eggnog = 150

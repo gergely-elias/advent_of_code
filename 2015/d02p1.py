@@ -1,5 +1,6 @@
-input_file = open("inputd02.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 total_wrapping_paper_area = 0
 for line in input_lines:

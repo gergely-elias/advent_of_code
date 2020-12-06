@@ -1,8 +1,8 @@
-input_file = open("inputd20.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import networkx
 import re
+
+input_lines = list(fileinput.input())
 
 
 def process_literals(route_regexp, start_nodes):

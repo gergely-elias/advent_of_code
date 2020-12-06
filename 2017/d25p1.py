@@ -1,7 +1,7 @@
-input_file = open("inputd25.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
+
+input_lines = list(fileinput.input())
 
 position = 0
 state_machine = {}

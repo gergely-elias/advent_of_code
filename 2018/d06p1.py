@@ -1,8 +1,8 @@
-input_file = open("inputd06.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import collections
 import re
+
+input_lines = list(fileinput.input())
 
 coordinates = [tuple(map(int, re.findall("\d+", line))) for line in input_lines]
 

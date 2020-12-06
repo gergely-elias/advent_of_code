@@ -1,5 +1,6 @@
-input_file = open("inputd05.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 uppercase_lowercase_code_offset = ord("a") - ord("A")
 polymer = list(input_lines[0].strip())

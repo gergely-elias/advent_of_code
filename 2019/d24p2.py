@@ -1,16 +1,15 @@
-input_file = open("inputd24.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import copy
 import collections
 import itertools
+
+input_lines = list(fileinput.input())
 
 height = len(input_lines)
 width = len(input_lines[0].strip())
 assert height % 2 == 1 and width % 2 == 1
 center_coord = ((height - 1) // 2, (width - 1) // 2)
 directions = [(-1, 0), (0, 1), (1, 0), (0, -1)]
-
 
 grid = collections.defaultdict(lambda: ".")
 for (row_index, col_index) in itertools.product(range(height), range(width)):

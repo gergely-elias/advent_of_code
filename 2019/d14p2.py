@@ -1,9 +1,9 @@
-input_file = open("inputd14.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import networkx
 import math
+
+input_lines = list(fileinput.input())
 
 
 def parse_input(instr):

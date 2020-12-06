@@ -1,8 +1,8 @@
-input_file = open("inputd18.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import copy
 import collections
+
+input_lines = list(fileinput.input())
 
 landscape = collections.defaultdict(lambda: -1)
 area_size = len(input_lines)

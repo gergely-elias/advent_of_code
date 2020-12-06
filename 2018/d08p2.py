@@ -1,8 +1,8 @@
-input_file = open("inputd08.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import sys
+
+input_lines = list(fileinput.input())
 
 sys.setrecursionlimit(5000)
 

@@ -1,7 +1,7 @@
-input_file = open("inputd08.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import collections
+
+input_lines = list(fileinput.input())
 
 image = input_lines[0].strip()
 height = 6

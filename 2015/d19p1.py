@@ -1,7 +1,7 @@
-input_file = open("inputd19.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
+
+input_lines = list(fileinput.input())
 
 replacements = [(tuple(re.findall("\w+", line.strip()))) for line in input_lines[:-2]]
 original_molecule = input_lines[-1].strip()

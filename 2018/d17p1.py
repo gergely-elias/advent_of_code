@@ -1,9 +1,9 @@
-input_file = open("inputd17.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import sys
 import re
 import collections
+
+input_lines = list(fileinput.input())
 
 sys.setrecursionlimit(5000)
 

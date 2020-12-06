@@ -1,8 +1,8 @@
-input_file = open("inputd12.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import itertools
+
+input_lines = list(fileinput.input())
 
 number_of_planets = len(input_lines)
 positions = []

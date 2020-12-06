@@ -1,8 +1,8 @@
-input_file = open("inputd13.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import collections
 import time
+
+input_lines = list(fileinput.input())
 
 orig_program = list(map(int, input_lines[0].split(",")))
 orig_program[0] = 2

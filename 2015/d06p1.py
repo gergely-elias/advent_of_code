@@ -1,5 +1,6 @@
-input_file = open("inputd06.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 light_status = 1000 * [0]
 for i in range(1000):

@@ -1,7 +1,7 @@
-input_file = open("inputd17.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
+
+input_lines = list(fileinput.input())
 
 total_eggnog = 150
 possible_combinations = [1] + total_eggnog * [0]

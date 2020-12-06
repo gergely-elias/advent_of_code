@@ -1,8 +1,8 @@
-input_file = open("inputd22.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import networkx
+
+input_lines = list(fileinput.input())
 
 cave_depth = int(re.findall("\d+", input_lines[0])[0])
 target_x, target_y = map(int, re.findall("\d+", input_lines[1]))

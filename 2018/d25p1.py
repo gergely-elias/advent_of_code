@@ -1,9 +1,9 @@
-input_file = open("inputd25.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import itertools
 import re
 import networkx
+
+input_lines = list(fileinput.input())
 
 
 def dist(pair):

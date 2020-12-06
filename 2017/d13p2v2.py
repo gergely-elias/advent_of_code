@@ -1,8 +1,8 @@
-input_file = open("inputd13.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import collections
+
+input_lines = list(fileinput.input())
 
 
 def gcd(a, b):

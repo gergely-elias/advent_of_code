@@ -1,5 +1,6 @@
-input_file = open("inputd11.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 line = input_lines[0].strip().split(",")
 cube_coordinate = [0, 0, 0]

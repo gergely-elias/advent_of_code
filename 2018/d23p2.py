@@ -1,8 +1,8 @@
-input_file = open("inputd23.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import z3
+
+input_lines = list(fileinput.input())
 
 
 def z3_abs(n):

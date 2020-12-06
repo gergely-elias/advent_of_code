@@ -1,8 +1,8 @@
-input_file = open("inputd15.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import collections
 import networkx
+
+input_lines = list(fileinput.input())
 
 direction_commands = [1, 3, 2, 4]
 direction_steps = [(-1, 0), (0, 1), (1, 0), (0, -1)]

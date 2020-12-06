@@ -1,7 +1,7 @@
-input_file = open("inputd22.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import collections
+
+input_lines = list(fileinput.input())
 
 init_grid_radius = (len(input_lines) - 1) // 2
 grid_state = collections.defaultdict(lambda: 0)

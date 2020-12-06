@@ -1,7 +1,7 @@
-input_file = open("inputd04.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import hashlib
+
+input_lines = list(fileinput.input())
 
 secret_key = input_lines[0].strip()
 

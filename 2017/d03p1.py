@@ -1,5 +1,6 @@
-input_file = open("inputd03.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 field_radius = 1000
 field = (2 * field_radius + 1) * [0]

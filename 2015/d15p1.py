@@ -1,9 +1,9 @@
-input_file = open("inputd15.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import operator
 import functools
+
+input_lines = list(fileinput.input())
 
 properties = []
 for line in input_lines:

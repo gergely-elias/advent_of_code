@@ -1,5 +1,6 @@
-input_file = open("inputd10.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 input_num = input_lines[0].strip()
 

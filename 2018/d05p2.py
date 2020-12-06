@@ -1,5 +1,6 @@
-input_file = open("inputd05.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 alphabet_length = ord("Z") - ord("A") + 1
 uppercase_lowercase_code_offset = ord("a") - ord("A")

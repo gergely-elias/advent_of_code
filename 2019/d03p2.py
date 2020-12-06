@@ -1,8 +1,8 @@
-input_file = open("inputd03.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import copy
+
+input_lines = list(fileinput.input())
 
 wires = []
 for line_index in range(len(input_lines)):

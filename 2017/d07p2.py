@@ -1,8 +1,8 @@
-input_file = open("inputd07.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import copy
+
+input_lines = list(fileinput.input())
 
 disc_weights = {}
 subtower_weights = {}

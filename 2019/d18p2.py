@@ -1,8 +1,8 @@
-input_file = open("inputd18.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import collections
 import networkx
+
+input_lines = list(fileinput.input())
 
 mazegraph = networkx.Graph()
 mazemap = collections.defaultdict(lambda: "#")

@@ -1,5 +1,6 @@
-input_file = open("inputd03.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 limit = int(input_lines[0].strip())
 odd_squareroot = int((limit - 1) ** 0.5 + 1) // 2 * 2 - 1

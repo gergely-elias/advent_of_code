@@ -1,5 +1,6 @@
-input_file = open("inputd02.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 program = list(map(int, input_lines[0].split(",")))
 program[1] = 12

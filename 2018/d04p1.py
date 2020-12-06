@@ -1,8 +1,8 @@
-input_file = open("inputd04.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import collections
 import re
+
+input_lines = list(fileinput.input())
 
 minutes_asleep = collections.defaultdict(lambda: 0)
 guards_cumulated = collections.defaultdict(lambda: 0)

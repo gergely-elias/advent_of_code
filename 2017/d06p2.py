@@ -1,5 +1,6 @@
-input_file = open("inputd06.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 line = input_lines[0].strip().split("\t")
 blocks = [int(x) for x in line]

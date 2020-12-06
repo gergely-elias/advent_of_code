@@ -1,8 +1,8 @@
-input_file = open("inputd18.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import collections
+
+input_lines = list(fileinput.input())
 
 instructions = [line.strip().split() for line in input_lines]
 program_state = []

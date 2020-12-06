@@ -1,7 +1,7 @@
-input_file = open("inputd13.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import collections
+
+input_lines = list(fileinput.input())
 
 map_of_tracks = collections.defaultdict(lambda: 0)
 

@@ -1,5 +1,6 @@
-input_file = open("inputd01.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 digit_sequence = input_lines[0].strip()
 sum_of_digits = 0

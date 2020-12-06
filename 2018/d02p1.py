@@ -1,7 +1,7 @@
-input_file = open("inputd02.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import collections
+
+input_lines = list(fileinput.input())
 
 count_2 = 0
 count_3 = 0

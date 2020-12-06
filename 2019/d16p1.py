@@ -1,7 +1,7 @@
-input_file = open("inputd16.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
+
+input_lines = list(fileinput.input())
 
 base_pattern = [0, 1, 0, -1]
 signal = list(map(int, list(re.findall("\d", input_lines[0]))))

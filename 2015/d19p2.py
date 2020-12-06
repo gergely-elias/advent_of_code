@@ -1,8 +1,8 @@
-input_file = open("inputd19.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import collections
+
+input_lines = list(fileinput.input())
 
 regex_start = None
 regex_end = None

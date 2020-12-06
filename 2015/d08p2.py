@@ -1,5 +1,6 @@
-input_file = open("inputd08.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 character_count_difference = 0
 for line in input_lines:

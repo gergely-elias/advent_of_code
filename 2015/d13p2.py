@@ -1,8 +1,8 @@
-input_file = open("inputd13.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import itertools
 import collections
+
+input_lines = list(fileinput.input())
 
 happiness_relations = collections.defaultdict(lambda: 0)
 people = set()

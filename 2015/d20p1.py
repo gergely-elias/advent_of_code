@@ -1,7 +1,8 @@
-input_file = open("inputd20.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import sympy
+
+input_lines = list(fileinput.input())
+
 
 divisor_sum_threshold = int(input_lines[0]) // 10
 candidate = 1

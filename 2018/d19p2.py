@@ -1,8 +1,8 @@
-input_file = open("inputd19.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import collections
+
+input_lines = list(fileinput.input())
 
 instruction_lines = [
     input_lines[line_index].strip() for line_index in range(1, len(input_lines))

@@ -1,9 +1,9 @@
-input_file = open("inputd24.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import copy
 import collections
 import itertools
+
+input_lines = list(fileinput.input())
 
 height = len(input_lines)
 width = len(input_lines[0].strip())

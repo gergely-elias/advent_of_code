@@ -1,5 +1,6 @@
-input_file = open("inputd17.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 steps = int(input_lines[0].strip())
 buffer_length = 1

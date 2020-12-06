@@ -1,5 +1,6 @@
-input_file = open("inputd18.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 table_size = len(input_lines)
 table = (table_size + 2) * [[]]

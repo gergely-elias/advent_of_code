@@ -1,9 +1,9 @@
-input_file = open("inputd20.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import collections
 import networkx
+
+input_lines = list(fileinput.input())
 
 maze = networkx.Graph()
 maze_lines = []

@@ -1,7 +1,7 @@
-input_file = open("inputd13.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import collections
+
+input_lines = list(fileinput.input())
 
 orig_program = list(map(int, input_lines[0].split(",")))
 program = collections.defaultdict(lambda: 0)

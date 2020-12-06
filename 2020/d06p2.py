@@ -1,7 +1,7 @@
-input_file = open("inputd06.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import collections
+
+input_lines = list(fileinput.input())
 
 groups = " ".join([line.strip() for line in input_lines]).split("  ")
 yes_questions = 0

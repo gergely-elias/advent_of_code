@@ -1,5 +1,6 @@
-input_file = open("inputd21.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 instruction_lines = [
     input_lines[line_index].strip() for line_index in range(1, len(input_lines))

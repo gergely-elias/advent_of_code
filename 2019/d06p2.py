@@ -1,7 +1,7 @@
-input_file = open("inputd06.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import networkx
+
+input_lines = list(fileinput.input())
 
 orbit_graph = networkx.Graph()
 for line_index in range(len(input_lines)):

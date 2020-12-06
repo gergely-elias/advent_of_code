@@ -1,8 +1,8 @@
-input_file = open("inputd15.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import operator
+
+input_lines = list(fileinput.input())
 
 health_points_at_start = 200
 goblin_hit_points = 3

@@ -1,7 +1,7 @@
-input_file = open("inputd08.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import collections
+
+input_lines = list(fileinput.input())
 
 registers = collections.defaultdict(lambda: 0)
 for line in input_lines:

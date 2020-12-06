@@ -1,5 +1,6 @@
-input_file = open("inputd09.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 distances = 8 * [0]
 index = 0

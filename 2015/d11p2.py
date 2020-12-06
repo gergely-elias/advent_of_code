@@ -1,8 +1,8 @@
-input_file = open("inputd11.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import string
 import itertools
+
+input_lines = list(fileinput.input())
 
 alphabet = string.ascii_lowercase
 forbidden_characters = ["i", "o", "l"]

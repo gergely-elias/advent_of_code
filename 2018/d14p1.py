@@ -1,5 +1,6 @@
-input_file = open("inputd14.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 lookup_position = int(input_lines[0].strip())
 lookup_length = 10

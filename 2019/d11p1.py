@@ -1,7 +1,7 @@
-input_file = open("inputd11.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import collections
+
+input_lines = list(fileinput.input())
 
 robot_position = (0, 0)
 robot_direction = 0

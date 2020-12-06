@@ -1,9 +1,9 @@
-input_file = open("inputd23.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
 import math
 import itertools
+
+input_lines = list(fileinput.input())
 
 nanobots = [list(map(int, re.findall("-?\d+", line.strip()))) for line in input_lines]
 dimension = len(nanobots[0]) - 1

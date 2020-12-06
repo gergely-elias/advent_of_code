@@ -1,5 +1,6 @@
-input_file = open("inputd23.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 range_start = int(input_lines[0].strip().split()[-1]) * int(
     input_lines[4].strip().split()[-1]

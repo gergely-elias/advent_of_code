@@ -1,7 +1,7 @@
-input_file = open("inputd07.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import itertools
+
+input_lines = list(fileinput.input())
 
 orig_program = list(map(int, input_lines[0].split(",")))
 

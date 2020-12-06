@@ -1,7 +1,7 @@
-input_file = open("inputd03.txt", "r")
-input_lines = input_file.readlines()
-
+import fileinput
 import re
+
+input_lines = list(fileinput.input())
 
 claims = [list(map(int, re.findall("\d+", line.strip()))) for line in input_lines]
 

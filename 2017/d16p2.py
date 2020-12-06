@@ -1,5 +1,6 @@
-input_file = open("inputd16.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 line = input_lines[0].strip().split(",")
 initial_order = [chr(i) for i in range(ord("a"), ord("p") + 1)]

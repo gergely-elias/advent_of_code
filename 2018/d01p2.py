@@ -1,5 +1,6 @@
-input_file = open("inputd01.txt", "r")
-input_lines = input_file.readlines()
+import fileinput
+
+input_lines = list(fileinput.input())
 
 freq = 0
 former_freqs = set([0])
