@@ -112,4 +112,4 @@ while position < len(program):
         break
     position += number_of_parameters[operation] + 1
 
-print(painted.values().count(True))
+print(list(painted.values()).count(True))
