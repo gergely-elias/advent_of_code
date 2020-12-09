@@ -1,6 +1,4 @@
 import fileinput
-import functools
-import random
 
 input_lines = list(fileinput.input())
 
