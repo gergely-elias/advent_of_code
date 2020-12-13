@@ -1,6 +1,5 @@
 import fileinput
 import networkx
-import re
 
 input_lines = list(fileinput.input())
 

@@ -1,4 +1,5 @@
 import fileinput
+import itertools
 
 input_lines = list(fileinput.input())
 
@@ -13,8 +14,6 @@ for i in range(8 - 1):
         distances[i][j] = dist
         distances[j][i] = dist
         index += 1
-
-import itertools
 
 min_total_distance = float("inf")
 all_city_permutations = itertools.permutations(range(8))

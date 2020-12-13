@@ -1,5 +1,4 @@
 import fileinput
-import re
 import operator
 
 input_lines = list(fileinput.input())

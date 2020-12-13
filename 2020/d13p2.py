@@ -1,5 +1,4 @@
 import fileinput
-import math
 
 input_lines = list(fileinput.input())
 

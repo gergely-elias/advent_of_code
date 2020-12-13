@@ -1,5 +1,6 @@
 import fileinput
 import re
+import collections
 
 input_lines = list(fileinput.input())
 
@@ -33,8 +34,6 @@ while line_index < len(input_lines):
         line_index += 1
     state_machine[described_state] = state_descriptions
     line_index += 1
-
-import collections
 
 tape = collections.defaultdict(lambda: 0)
 

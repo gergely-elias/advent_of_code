@@ -1,6 +1,5 @@
 import fileinput
 import collections
-import time
 
 input_lines = list(fileinput.input())
 

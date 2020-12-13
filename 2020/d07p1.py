@@ -1,5 +1,4 @@
 import fileinput
-import collections
 import networkx
 import re
 

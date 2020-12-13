@@ -1,6 +1,4 @@
 import fileinput
-import re
-import copy
 
 input_lines = list(fileinput.input())
 

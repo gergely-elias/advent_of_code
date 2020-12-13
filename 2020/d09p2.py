@@ -1,5 +1,4 @@
 import fileinput
-import collections
 import itertools
 
 input_lines = list(fileinput.input())

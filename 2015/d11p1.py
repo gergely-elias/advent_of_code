@@ -1,6 +1,5 @@
 import fileinput
 import string
-import itertools
 
 input_lines = list(fileinput.input())
 
