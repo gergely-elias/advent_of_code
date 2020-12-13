@@ -20,11 +20,16 @@ def chinese_remainder_theorem(remainders):
         (modulo2, remainder2) = remainders.popitem()
 
         gcd, bezout_coeffs = extended_gcd(modulo1, modulo2)
-        assert gcd == 1
-        remainders[modulo1 * modulo2] = (
-            remainder1 * modulo2 * bezout_coeffs[1]
-            + remainder2 * modulo1 * bezout_coeffs[0]
-        ) % (modulo1 * modulo2)
+        assert (remainder1 - remainder2) % gcd == 0
+
+        remainders[modulo1 * modulo2 // gcd] = (
+            (
+                remainder1 * modulo2 * bezout_coeffs[1]
+                + remainder2 * modulo1 * bezout_coeffs[0]
+            )
+            // gcd
+            % (modulo1 * modulo2 // gcd)
+        )
     return remainders.popitem()[1]
 
 
