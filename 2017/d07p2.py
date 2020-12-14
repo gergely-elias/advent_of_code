@@ -46,7 +46,7 @@ while True:
                 weight_to_remove = disc_weights[disc]
                 break
 
-    if unbalanced_disc == None:
+    if unbalanced_disc is None:
         unknown_weight_subtowers.pop(disc_to_remove)
         subtower_weights[disc_to_remove] = weight_to_remove
         for disc in unknown_weight_subtowers:

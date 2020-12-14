@@ -16,7 +16,7 @@ last_metadata_sum = 0
 
 
 def parse():
-    global index, numbers_of_children, metadata_lengths, metadata_stack, last_metadata_sum
+    global index, numbers_of_children, metadata_lengths, metadata_stack
     numbers_of_children.append(tree[index])
     metadata_lengths.append(tree[index + 1])
     index += 2
@@ -41,8 +41,7 @@ def parse():
 
     numbers_of_children.pop()
     metadata_lengths.pop()
-    last_metadata_sum = metadata_stack[-1]
 
 
 parse()
-print(last_metadata_sum)
+print(metadata_stack[-1])

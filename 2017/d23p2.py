@@ -16,6 +16,6 @@ for number in search_range:
         if number % possible_divisor == 0:
             is_prime = False
             break
-    if is_prime == False:
+    if not is_prime:
         composite_numbers += 1
 print(composite_numbers)

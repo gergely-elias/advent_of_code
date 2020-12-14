@@ -28,10 +28,10 @@ def classify(replacements):
                             ]
                         )
                     )
-                    and (regex_start == None or regex_start == new_submolecule[1])
-                    and (regex_end == None or regex_end == new_submolecule[-1])
+                    and (regex_start is None or regex_start == new_submolecule[1])
+                    and (regex_end is None or regex_end == new_submolecule[-1])
                     and (
-                        regex_separator == None
+                        regex_separator is None
                         or all(
                             [
                                 regex_separator == new_submolecule[i]

@@ -65,12 +65,12 @@ def gcd(a, b):
     return a
 
 
-def list_lcm(l):
-    while len(l) > 1:
-        a = l.pop(0)
-        b = l.pop(0)
-        l.append(a * b // gcd(a, b))
-    return l[0]
+def list_lcm(integers):
+    while len(integers) > 1:
+        a = integers.pop(0)
+        b = integers.pop(0)
+        integers.append(a * b // gcd(a, b))
+    return integers[0]
 
 
 print(list_lcm(coord_period))

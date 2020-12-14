@@ -40,6 +40,10 @@ looking_for_top_left_corner = True
 top_left_x = 0
 top_left_y = 0
 right_edge = True
+right_y = 0
+right_x = 0
+left_y = 0
+left_x = 0
 
 while True:
     in_beam = False

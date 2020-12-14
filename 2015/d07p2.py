@@ -5,6 +5,7 @@ input_lines = list(fileinput.input())
 
 modulo = 2 ** 16
 ref_expr = {}
+repl_expr = ""
 for iteration in range(2):
     for line in input_lines:
         [expr, var] = line.strip().split(" -> ")

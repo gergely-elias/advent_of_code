@@ -28,7 +28,19 @@ write_parameter_index = {
     for op in operation_scheme
 }
 inp_index = 0
-inputs = "NOT A J\nNOT J T\nAND B T\nAND C T\nNOT T J\nAND D J\nNOT E T\nNOT T T\nOR H T\nAND T J\nRUN\n"
+inputs = (
+    "NOT A J\n"
+    + "NOT J T\n"
+    + "AND B T\n"
+    + "AND C T\n"
+    + "NOT T J\n"
+    + "AND D J\n"
+    + "NOT E T\n"
+    + "NOT T T\n"
+    + "OR H T\n"
+    + "AND T J\n"
+    + "RUN\n"
+)
 output_list = ""
 position = 0
 relative_base = 0
