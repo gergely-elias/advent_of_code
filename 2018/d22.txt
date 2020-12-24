@@ -19,7 +19,7 @@ then the followings hold:
   the only 'forbidden' equipment is the one with code x
   so we can add two edges - both with weight 1:
    the one between (coords of first region, (x+1) mod 3) and (coords of second region, (x+1) mod 3), and
-   the one between (coords of first region, (x+1) mod 3) and (coords of second region, (x+1) mod 3)
+   the one between (coords of first region, (x+2) mod 3) and (coords of second region, (x+2) mod 3)
  if two neighbouring regions have different types x and y:
   there is only one type of equipment which we can carry between them
   as the codes of equipment are all unique, and sum up to 3, the only allowed equipment's code can be calculated as 3-(x+y)
