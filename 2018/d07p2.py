@@ -6,7 +6,7 @@ input_lines = list(fileinput.input())
 dependencies = []
 tasks = set()
 for line in input_lines:
-    dependency = [task.strip() for task in re.findall("\ [A-Z]\ ", line.strip())]
+    dependency = [task.strip() for task in re.findall(r"\ [A-Z]\ ", line.strip())]
     dependencies.append(dependency)
     tasks.update(dependency)
 

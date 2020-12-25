@@ -10,7 +10,7 @@ positions = []
 velocities = []
 
 for line_index in range(number_of_planets):
-    positions.append(list(map(int, re.findall("-?\d+", input_lines[line_index]))))
+    positions.append(list(map(int, re.findall(r"-?\d+", input_lines[line_index]))))
 dimensions = len(positions[0])
 for planet_index in range(number_of_planets):
     velocities.append([0] * dimensions)

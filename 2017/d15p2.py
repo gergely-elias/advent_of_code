@@ -3,7 +3,7 @@ import re
 
 input_lines = list(fileinput.input())
 
-values = [int(re.findall("\d+", line)[0]) for line in input_lines]
+values = [int(re.findall(r"\d+", line)[0]) for line in input_lines]
 factors = [16807, 48271]
 remainder_modulus = 2147483647
 digits_to_compare = 16

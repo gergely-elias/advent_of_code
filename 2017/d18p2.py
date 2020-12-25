@@ -18,7 +18,7 @@ program_id = 0
 
 
 def substitute(program_id, value):
-    if re.match("-?\d+", value):
+    if re.match(r"-?\d+", value):
         return int(value)
     return program_state[program_id]["registers"][value]
 

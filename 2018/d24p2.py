@@ -22,11 +22,11 @@ for line in input_lines:
     elif line == "":
         continue
     number_of_units, hit_points, attack_damage, initiative = map(
-        int, re.findall("\d+", line)
+        int, re.findall(r"\d+", line)
     )
-    immunity = parse_attack_type_list(re.findall("immune to ([\w\ ,]+)", line))
-    weakness = parse_attack_type_list(re.findall("weak to ([\w\ ,]+)", line))
-    attack_type = re.findall("(\w+) damage", line)[0]
+    immunity = parse_attack_type_list(re.findall(r"immune to ([\w\ ,]+)", line))
+    weakness = parse_attack_type_list(re.findall(r"weak to ([\w\ ,]+)", line))
+    attack_type = re.findall(r"(\w+) damage", line)[0]
     group = {
         "class": current_class,
         "units": number_of_units,

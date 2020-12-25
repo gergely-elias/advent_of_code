@@ -67,11 +67,11 @@ result = 0
 possible_operator_indices = [set(range(16)) for i in range(16)]
 while input_lines[line_index].startswith("B"):
     registers_before_operation = list(
-        map(int, re.findall("\d+", input_lines[line_index]))
+        map(int, re.findall(r"\d+", input_lines[line_index]))
     )
-    instruction = list(map(int, re.findall("\d+", input_lines[line_index + 1])))
+    instruction = list(map(int, re.findall(r"\d+", input_lines[line_index + 1])))
     registers_after_operation = list(
-        map(int, re.findall("\d+", input_lines[line_index + 2]))
+        map(int, re.findall(r"\d+", input_lines[line_index + 2]))
     )
 
     possible_operator_indices[instruction[0]].intersection_update(
@@ -95,7 +95,7 @@ while operator_indices.count(-1) > 0:
 
 registers = [0] * 4
 while line_index < len(input_lines):
-    instruction = list(map(int, re.findall("\d+", input_lines[line_index])))
+    instruction = list(map(int, re.findall(r"\d+", input_lines[line_index])))
     if len(instruction) == 4:
         operate(instruction, registers, operator_indices[instruction[0]])
     line_index += 1

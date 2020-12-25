@@ -5,7 +5,7 @@ input_lines = list(fileinput.input())
 
 
 def parse_line(line):
-    fields = re.split("\W+", line)
+    fields = re.split(r"\W+", line)
     return {
         "min_count": int(fields[0]),
         "max_count": int(fields[1]),

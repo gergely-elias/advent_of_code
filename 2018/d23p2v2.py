@@ -5,7 +5,7 @@ import itertools
 
 input_lines = list(fileinput.input())
 
-nanobots = [list(map(int, re.findall("-?\d+", line.strip()))) for line in input_lines]
+nanobots = [list(map(int, re.findall(r"-?\d+", line.strip()))) for line in input_lines]
 dimension = len(nanobots[0]) - 1
 
 range_extrema = [

@@ -14,7 +14,7 @@ for line in input_lines:
             2 ** bit_index for bit_index, bit in enumerate(mask[::-1]) if bit == "X"
         ]
     else:
-        address, value = map(int, re.findall("\d+", line))
+        address, value = map(int, re.findall(r"\d+", line))
         address = (address | ones) & reset
         for floating_submask in range(2 ** len(mask_bit_values)):
             floating_mask = sum(

@@ -7,7 +7,7 @@ base_discs = set()
 subtower_discs = set()
 
 for line in input_lines:
-    discs = re.findall("[a-z]+", line)
+    discs = re.findall(r"[a-z]+", line)
     base_discs.add(discs[0])
     subtower_discs.update(discs[1:])
 

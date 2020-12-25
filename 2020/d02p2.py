@@ -5,7 +5,7 @@ input_lines = list(fileinput.input())
 
 
 def parse_line(line):
-    fields = re.split("\W+", line)
+    fields = re.split(r"\W+", line)
     return {
         "indices": [int(position_index) - 1 for position_index in fields[0:2]],
         "letter": fields[2],

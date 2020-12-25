@@ -4,7 +4,7 @@ import re
 input_lines = list(fileinput.input())
 
 base_pattern = [0, 1, 0, -1]
-signal = list(map(int, list(re.findall("\d", input_lines[0]))))
+signal = list(map(int, list(re.findall(r"\d", input_lines[0]))))
 
 n = len(signal)
 for iteration in range(100):

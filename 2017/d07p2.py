@@ -11,7 +11,7 @@ known_weight_subtowers = {}
 
 for line in input_lines:
     line = line.strip()
-    line = re.findall("\w+", line)
+    line = re.findall(r"\w+", line)
 
     disc = line[0]
     weight = int(line[1])

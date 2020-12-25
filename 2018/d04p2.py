@@ -10,10 +10,10 @@ guards_cumulated = collections.defaultdict(lambda: 0)
 sorted_input = sorted(input_lines)
 for line in sorted_input:
     line = line.strip()
-    timestamp = list(map(int, re.findall("\d+", line[:19])))
+    timestamp = list(map(int, re.findall(r"\d+", line[:19])))
     action = line[19:]
     if action[:5] == "Guard":
-        guard_id = int(re.findall("\d+", action)[0])
+        guard_id = int(re.findall(r"\d+", action)[0])
     elif action[:5] == "falls":
         sleep_start = timestamp[4]
     else:

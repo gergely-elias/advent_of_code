@@ -8,7 +8,7 @@ instruction_lines = [
     input_lines[line_index].strip() for line_index in range(1, len(input_lines))
 ]
 variables = [
-    int(re.findall("-?\d+", instruction_line)[1])
+    int(re.findall(r"-?\d+", instruction_line)[1])
     for instruction_line in instruction_lines
 ]
 

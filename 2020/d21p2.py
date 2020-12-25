@@ -9,7 +9,7 @@ possibly_allergen_ingredient = dict()
 all_ingredients = collections.defaultdict(lambda: 0)
 for line in input_lines:
     ingredient_block, allergen_block = re.findall(
-        "(.*)\ \(contains\ (.*)\)", line.strip()
+        r"(.*)\ \(contains\ (.*)\)", line.strip()
     )[0]
     ingredients = ingredient_block.split(" ")
     allergens = allergen_block.split(", ")

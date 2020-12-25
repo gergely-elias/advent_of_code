@@ -12,7 +12,7 @@ big_image_size_in_tiles = int(math.sqrt(len(tile_blocks)))
 edge_tile_indices = collections.defaultdict(lambda: [])
 for tile_block in tile_blocks:
     tile_lines = [line.strip() for line in tile_block.split("\n")]
-    tile_index = re.findall("\d+", tile_lines[0])[0]
+    tile_index = re.findall(r"\d+", tile_lines[0])[0]
     tile_matrix = numpy.array(
         [[1 if x == "#" else 0 for x in y] for y in tile_lines[1:]]
     )

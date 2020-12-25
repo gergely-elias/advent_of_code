@@ -10,11 +10,11 @@ particles = []
 
 for line in input_lines:
     line = line.strip()
-    line = re.findall("<[^>]*>", line)
+    line = re.findall(r"<[^>]*>", line)
     particle = {}
-    particle["position"] = list(map(int, re.findall("-?\d+", line[0])))
-    particle["velocity"] = list(map(int, re.findall("-?\d+", line[1])))
-    particle["acceleration"] = list(map(int, re.findall("-?\d+", line[2])))
+    particle["position"] = list(map(int, re.findall(r"-?\d+", line[0])))
+    particle["velocity"] = list(map(int, re.findall(r"-?\d+", line[1])))
+    particle["acceleration"] = list(map(int, re.findall(r"-?\d+", line[2])))
     particles.append(particle)
 
 possible_collision_ticks = set()

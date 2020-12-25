@@ -30,16 +30,16 @@ for iteration in range(2):
 
     while True:
         for x in ref_expr:
-            if re.search("\d+\ \D+\ \d+", ref_expr[x]):
+            if re.search(r"\d+\ \D+\ \d+", ref_expr[x]):
                 repl_var = x
                 repl_expr = str(eval("(" + ref_expr[x] + ")%" + str(modulo)))
                 break
         if repl_var == "a":
             break
         for x in ref_expr:
-            if re.search("(^|\W)" + repl_var + "($|\W)", ref_expr[x]):
+            if re.search(r"(^|\W)" + repl_var + r"($|\W)", ref_expr[x]):
                 ref_expr[x] = re.sub(
-                    "(?<!\w)" + repl_var + "(?!\w)", repl_expr, ref_expr[x], 2
+                    r"(?<!\w)" + repl_var + r"(?!\w)", repl_expr, ref_expr[x], 2
                 )
         ref_expr.pop(repl_var)
 

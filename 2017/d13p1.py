@@ -7,7 +7,7 @@ ranges = {}
 
 for line in input_lines:
     line = line.strip()
-    line = re.findall("\d+", line)
+    line = re.findall(r"\d+", line)
     ranges[int(line[0])] = int(line[1])
 
 severity = 0

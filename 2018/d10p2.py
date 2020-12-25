@@ -3,7 +3,7 @@ import re
 
 input_lines = list(fileinput.input())
 
-points = [list(map(int, re.findall("-?\d+", line.strip()))) for line in input_lines]
+points = [list(map(int, re.findall(r"-?\d+", line.strip()))) for line in input_lines]
 
 time = 0
 min_text_height = float("inf")

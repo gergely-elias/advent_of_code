@@ -5,7 +5,7 @@ input_lines = list(fileinput.input())
 
 nanobots = []
 for line in input_lines:
-    nanobot = list(map(int, re.findall("-?\d+", line.strip())))
+    nanobot = list(map(int, re.findall(r"-?\d+", line.strip())))
     nanobots.append(nanobot)
 num_of_coords = len(nanobots[0]) - 1
 radii = [nanobot[num_of_coords] for nanobot in nanobots]

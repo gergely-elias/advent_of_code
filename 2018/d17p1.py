@@ -15,10 +15,10 @@ min_y = float("inf")
 max_y = -float("inf")
 for line in input_lines:
     coord_x = list(
-        map(int, re.findall("\d+", re.findall("x=([\d\.]+)", line.strip())[0]))
+        map(int, re.findall(r"\d+", re.findall(r"x=([\d\.]+)", line.strip())[0]))
     )
     coord_y = list(
-        map(int, re.findall("\d+", re.findall("y=([\d\.]+)", line.strip())[0]))
+        map(int, re.findall(r"\d+", re.findall(r"y=([\d\.]+)", line.strip())[0]))
     )
     range_x = range(coord_x[0], coord_x[-1] + 1)
     range_y = range(coord_y[0], coord_y[-1] + 1)

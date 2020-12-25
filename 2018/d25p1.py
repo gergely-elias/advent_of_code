@@ -13,7 +13,7 @@ def dist(pair):
 constellation = networkx.Graph()
 points = []
 for line in input_lines:
-    point = tuple(map(int, re.findall("-?\d+", line.strip())))
+    point = tuple(map(int, re.findall(r"-?\d+", line.strip())))
     points.append(point)
     constellation.add_node(point)
 

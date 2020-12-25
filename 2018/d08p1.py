@@ -3,7 +3,7 @@ import re
 
 input_lines = list(fileinput.input())
 
-tree = list(map(int, re.findall("\d+", input_lines[0].strip())))
+tree = list(map(int, re.findall(r"\d+", input_lines[0].strip())))
 
 index = 0
 numbers_of_children = []

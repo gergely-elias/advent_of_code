@@ -18,7 +18,7 @@ for rule_line in rule_lines:
         literal[rule_index] = rule[1:-1]
     else:
         rules[rule_index] = rule
-        referenced_rules = re.findall("\d+", rule)
+        referenced_rules = re.findall(r"\d+", rule)
         for referenced_rule in referenced_rules:
             rule_dependencies.add_edge(rule_index, referenced_rule)
 order_of_rules = list(reversed(list(networkx.topological_sort(rule_dependencies))))

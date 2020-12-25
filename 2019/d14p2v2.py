@@ -14,7 +14,9 @@ def parse_input(instr):
 dependencies = networkx.DiGraph()
 reaction_amounts = {}
 for line_index in range(len(input_lines)):
-    reaction = list(map(parse_input, re.findall("\d+ [A-Z]+", input_lines[line_index])))
+    reaction = list(
+        map(parse_input, re.findall(r"\d+ [A-Z]+", input_lines[line_index]))
+    )
     output_chemical, output_chemical_amount = reaction[-1]
     reaction_amount = {output_chemical: output_chemical_amount}
     for input_chemical_index in range(len(reaction) - 1):

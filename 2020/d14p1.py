@@ -11,6 +11,6 @@ for line in input_lines:
         ones = int(mask.replace("X", "1"), 2)
         zeros = int(mask.replace("X", "0"), 2)
     else:
-        address, value = map(int, re.findall("\d+", line))
+        address, value = map(int, re.findall(r"\d+", line))
         memory[address] = (value & ones) | zeros
 print(sum(memory.values()))

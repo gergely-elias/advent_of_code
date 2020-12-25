@@ -20,7 +20,7 @@ donut_width = donut_width_with_portals - 2 * 2
 breadth = donut_width
 for line_index in range(2, len(input_lines) - 2):
     breadth = min(
-        breadth, min(list(map(len, re.findall("[\.#]+", maze_lines[line_index]))))
+        breadth, min(list(map(len, re.findall(r"[\.#]+", maze_lines[line_index]))))
     )
 
 for y in range(donut_height_with_portals):

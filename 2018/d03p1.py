@@ -3,7 +3,7 @@ import re
 
 input_lines = list(fileinput.input())
 
-claims = [list(map(int, re.findall("\d+", line.strip()))) for line in input_lines]
+claims = [list(map(int, re.findall(r"\d+", line.strip()))) for line in input_lines]
 
 size_x = max([x + w for claim_id, x, y, w, h in claims])
 size_y = max([y + h for claim_id, x, y, w, h in claims])

@@ -14,7 +14,7 @@ x, y, z = z3.Int("x"), z3.Int("y"), z3.Int("z")
 bot_ranges = []
 for line_index, line in enumerate(input_lines):
     bot_ranges.append(z3.Int("bot_range_" + str(line_index)))
-    bot_x, bot_y, bot_z, bot_radius = map(int, re.findall("-?\d+", line.strip()))
+    bot_x, bot_y, bot_z, bot_radius = map(int, re.findall(r"-?\d+", line.strip()))
     optimizer.add(
         bot_ranges[line_index]
         == z3.If(

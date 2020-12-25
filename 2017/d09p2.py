@@ -5,8 +5,8 @@ input_lines = list(fileinput.input())
 
 line = input_lines[0].strip()
 
-ignore_regexp = "!."
-garbage_regexp = "<[^>]*>"
+ignore_regexp = r"!."
+garbage_regexp = r"<[^>]*>"
 
 line = re.sub(ignore_regexp, "", line)
 length_with_garbage = len(line)

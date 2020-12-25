@@ -3,7 +3,7 @@ import re
 
 input_lines = list(fileinput.input())
 
-cups = list(map(int, re.findall("\d", input_lines[0])))
+cups = list(map(int, re.findall(r"\d", input_lines[0])))
 number_of_cups = len(cups)
 
 for move in range(100):

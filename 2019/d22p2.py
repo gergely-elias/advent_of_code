@@ -5,7 +5,7 @@ input_lines = list(fileinput.input())
 
 shuffle_steps = []
 for line in input_lines:
-    nums_on_line = re.findall("-?\d+", line)
+    nums_on_line = re.findall(r"-?\d+", line)
     shuffle_steps.append((line[0], int(nums_on_line[0]) if nums_on_line else None))
 
 deck_size = 119315717514047

@@ -11,7 +11,7 @@ last_sound_played = None
 
 
 def substitute(value):
-    if re.match("-?\d+", value):
+    if re.match(r"-?\d+", value):
         return int(value)
     return registers[value]
 

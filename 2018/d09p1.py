@@ -3,7 +3,7 @@ import re
 
 input_lines = list(fileinput.input())
 
-players, marbles = map(int, re.findall("\d+", input_lines[0].strip()))
+players, marbles = map(int, re.findall(r"\d+", input_lines[0].strip()))
 
 prev_marble = [0]
 next_marble = [0]

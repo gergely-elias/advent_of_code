@@ -8,7 +8,7 @@ subtower_discs = set()
 disc_properties = {}
 
 for line in input_lines:
-    discs = re.findall("\w+", line)
+    discs = re.findall(r"\w+", line)
     base_discs.add(discs[0])
     subtower_discs.update(discs[2:])
     disc_properties[discs[0]] = {

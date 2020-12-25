@@ -3,7 +3,7 @@ import re
 
 input_lines = list(fileinput.input())
 
-coordinates = [tuple(map(int, re.findall("\d+", line))) for line in input_lines]
+coordinates = [tuple(map(int, re.findall(r"\d+", line))) for line in input_lines]
 (x_list, y_list) = map(sorted, zip(*coordinates))
 
 num_of_coords = len(coordinates)

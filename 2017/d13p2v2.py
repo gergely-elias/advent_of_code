@@ -18,7 +18,7 @@ forbidden_delays = collections.defaultdict(lambda: set())
 
 for line in input_lines:
     line = line.strip()
-    line = re.findall("\d+", line)
+    line = re.findall(r"\d+", line)
     forbidden_delays[2 * (int(line[1]) - 1)].add(
         (-int(line[0])) % (2 * (int(line[1]) - 1))
     )

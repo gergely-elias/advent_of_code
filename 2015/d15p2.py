@@ -7,7 +7,7 @@ input_lines = list(fileinput.input())
 
 properties = []
 for line in input_lines:
-    properties.append([int(x) for x in re.findall("-?\d+", line.strip())])
+    properties.append([int(x) for x in re.findall(r"-?\d+", line.strip())])
 number_of_ingredients = len(properties)
 number_of_properties = len(properties[0])
 

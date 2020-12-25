@@ -3,7 +3,7 @@ import re
 
 input_lines = list(fileinput.input())
 
-discs = re.findall("[a-z]+", "".join(input_lines))
+discs = re.findall(r"[a-z]+", "".join(input_lines))
 
 unique_discs = set()
 for disc in discs:

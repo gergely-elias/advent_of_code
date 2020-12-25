@@ -7,7 +7,7 @@ input_lines = list(fileinput.input())
 flipped_tiles = set()
 possible_directions = ["e", "w", "nw", "se", "sw", "ne"]
 for line in input_lines:
-    tile_path = re.findall("[ns]?[we]", line.strip())
+    tile_path = re.findall(r"[ns]?[we]", line.strip())
     cube_coordinate = [0, 0, 0]
     for direction in tile_path:
         direction_index = possible_directions.index(direction)

@@ -3,8 +3,8 @@ import re
 
 input_lines = list(fileinput.input())
 
-cave_depth = int(re.findall("\d+", input_lines[0])[0])
-target_x, target_y = map(int, re.findall("\d+", input_lines[1]))
+cave_depth = int(re.findall(r"\d+", input_lines[0])[0])
+target_x, target_y = map(int, re.findall(r"\d+", input_lines[1]))
 
 cave_generator = [16807, 48271, 20183]
 source_x, source_y = 0, 0

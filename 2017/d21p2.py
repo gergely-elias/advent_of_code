@@ -61,8 +61,8 @@ def enhance(tiled_image):
 patterns = {}
 for line in input_lines:
     line = line.strip()
-    line = re.findall("[/#\.]+", line)
-    patterns[tuple(re.findall("[#\.]+", line[0]))] = re.findall("[#\.]+", line[1])
+    line = re.findall(r"[/#\.]+", line)
+    patterns[tuple(re.findall(r"[#\.]+", line[0]))] = re.findall(r"[#\.]+", line[1])
 
 image = [".#.", "..#", "###"]
 steps = 18

@@ -3,7 +3,7 @@ import re
 
 input_lines = list(fileinput.input())
 
-signal = list(map(int, list(re.findall("\d", input_lines[0]))))
+signal = list(map(int, list(re.findall(r"\d", input_lines[0]))))
 signal *= 10000
 offset = int("".join(map(str, signal[:7])))
 assert offset >= len(signal) // 2

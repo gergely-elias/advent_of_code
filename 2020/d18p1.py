@@ -21,6 +21,6 @@ sum_of_lines = 0
 for line in input_lines:
     reduced_line = "(" + line.strip() + ")"
     while "(" in reduced_line:
-        reduced_line = re.sub("\([^\(\)]+\)", expression_value, reduced_line)
+        reduced_line = re.sub(r"\([^\(\)]+\)", expression_value, reduced_line)
     sum_of_lines += int(reduced_line)
 print(sum_of_lines)

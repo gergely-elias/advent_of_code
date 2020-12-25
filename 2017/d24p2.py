@@ -3,7 +3,7 @@ import re
 
 input_lines = list(fileinput.input())
 
-edges = [list(map(int, re.findall("\d+", line.strip()))) for line in input_lines]
+edges = [list(map(int, re.findall(r"\d+", line.strip()))) for line in input_lines]
 
 
 def trackback_edges(path, edges_left):

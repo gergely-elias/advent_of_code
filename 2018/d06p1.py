@@ -4,7 +4,7 @@ import re
 
 input_lines = list(fileinput.input())
 
-coordinates = [tuple(map(int, re.findall("\d+", line))) for line in input_lines]
+coordinates = [tuple(map(int, re.findall(r"\d+", line))) for line in input_lines]
 
 minx = float("inf")
 maxx = -float("inf")

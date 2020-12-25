@@ -5,7 +5,7 @@ input_lines = list(fileinput.input())
 
 sues = {}
 for line in input_lines:
-    current_sue = re.findall("\w+", line.strip())
+    current_sue = re.findall(r"\w+", line.strip())
     sue_properties = {}
     for i in range(2, len(current_sue), 2):
         sue_properties[current_sue[i]] = int(current_sue[i + 1])

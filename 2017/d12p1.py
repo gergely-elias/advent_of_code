@@ -5,7 +5,7 @@ input_lines = list(fileinput.input())
 
 neighbours = []
 for line in input_lines:
-    neighbours.append([int(x) for x in re.findall("\d+", line.strip())][1:])
+    neighbours.append([int(x) for x in re.findall(r"\d+", line.strip())][1:])
 
 group = set()
 remaining_ids = set(range(len(neighbours)))

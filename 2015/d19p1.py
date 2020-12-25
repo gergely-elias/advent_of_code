@@ -3,7 +3,7 @@ import re
 
 input_lines = list(fileinput.input())
 
-replacements = [(tuple(re.findall("\w+", line.strip()))) for line in input_lines[:-2]]
+replacements = [(tuple(re.findall(r"\w+", line.strip()))) for line in input_lines[:-2]]
 original_molecule = input_lines[-1].strip()
 new_molecules = set()
 for old_submolecule, new_submolecule in replacements:

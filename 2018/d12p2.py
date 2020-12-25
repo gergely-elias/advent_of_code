@@ -3,11 +3,11 @@ import re
 
 input_lines = list(fileinput.input())
 
-initial_state = "..." + re.findall("[#\.]+", input_lines[0].strip())[0] + "..."
+initial_state = "..." + re.findall(r"[#\.]+", input_lines[0].strip())[0] + "..."
 
 transformations = dict()
 for line in input_lines[2:]:
-    neighbourhood, new_state = re.findall("[#\.]+", line.strip())
+    neighbourhood, new_state = re.findall(r"[#\.]+", line.strip())
     transformations[neighbourhood] = new_state
 
 total_generations = 50000000000

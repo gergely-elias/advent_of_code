@@ -66,11 +66,11 @@ line_index = 0
 result = 0
 while input_lines[line_index].startswith("B"):
     registers_before_operation = list(
-        map(int, re.findall("\d+", input_lines[line_index]))
+        map(int, re.findall(r"\d+", input_lines[line_index]))
     )
-    instruction = list(map(int, re.findall("\d+", input_lines[line_index + 1])))
+    instruction = list(map(int, re.findall(r"\d+", input_lines[line_index + 1])))
     registers_after_operation = list(
-        map(int, re.findall("\d+", input_lines[line_index + 2]))
+        map(int, re.findall(r"\d+", input_lines[line_index + 2]))
     )
 
     if [

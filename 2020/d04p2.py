@@ -34,12 +34,12 @@ for passport in passports:
                     and int(passport_fields["hgt"][:-2]) in range(59, 77)
                 )
             )
-            and re.match("^#[0-9a-f]{6}$", passport_fields["hcl"])
+            and re.match(r"^#[0-9a-f]{6}$", passport_fields["hcl"])
             and (
                 passport_fields["ecl"]
                 in ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]
             )
-            and re.match("^[0-9]{9}$", passport_fields["pid"])
+            and re.match(r"^[0-9]{9}$", passport_fields["pid"])
         ):
             valid_passports += 1
 print(valid_passports)

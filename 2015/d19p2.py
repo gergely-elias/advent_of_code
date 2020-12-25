@@ -57,13 +57,13 @@ def classify(replacements):
     return replacement_classes
 
 
-replacements = [(tuple(re.findall("\w+", line.strip()))) for line in input_lines[:-2]]
+replacements = [(tuple(re.findall(r"\w+", line.strip()))) for line in input_lines[:-2]]
 replacements = [
-    (replacement[0], tuple(re.findall("[A-Z][a-z]*", replacement[1])))
+    (replacement[0], tuple(re.findall(r"[A-Z][a-z]*", replacement[1])))
     for replacement in replacements
 ]
 molecule_length_changes = classify(replacements)
-original_molecule = list(re.findall("[A-Z][a-z]*", input_lines[-1].strip()))
+original_molecule = list(re.findall(r"[A-Z][a-z]*", input_lines[-1].strip()))
 if len(molecule_length_changes[0]) == 1 and min(molecule_length_changes[1]) == 2:
     print(
         len(original_molecule)

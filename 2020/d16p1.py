@@ -7,7 +7,9 @@ ticket_field_rules, my_ticket, nearby_tickets = "".join(input_lines).split("\n\n
 
 ranges_of_fields = [
     list(
-        map(lambda range: list(map(int, range.split("-"))), re.findall("\d+-\d+", line))
+        map(
+            lambda range: list(map(int, range.split("-"))), re.findall(r"\d+-\d+", line)
+        )
     )
     for line in ticket_field_rules.strip().split("\n")
 ]

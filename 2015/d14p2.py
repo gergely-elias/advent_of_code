@@ -6,7 +6,7 @@ input_lines = list(fileinput.input())
 time = 2503
 dist_over_time = []
 for line in input_lines:
-    nums = [int(x) for x in re.findall("\d+", line.strip())]
+    nums = [int(x) for x in re.findall(r"\d+", line.strip())]
     period = nums[1] + nums[2]
     dist = [
         (t // period * nums[1] + min(t % period, nums[1])) * nums[0]
