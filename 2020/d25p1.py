@@ -9,13 +9,12 @@ exponent = 0
 power = 1
 base = 7
 modulus = 20201227
-card_private_key = None
-door_private_key = None
-while card_private_key is None or door_private_key is None:
+while True:
     exponent += 1
     power = (power * base) % modulus
     if power == card_public_key:
-        card_private_key = exponent
+        print(pow(door_public_key, exponent, modulus))
+        break
     elif power == door_public_key:
-        door_private_key = exponent
-print(pow(base, card_private_key * door_private_key, modulus))
+        print(pow(card_public_key, exponent, modulus))
+        break
