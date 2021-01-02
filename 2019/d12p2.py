@@ -2,6 +2,7 @@ import fileinput
 import re
 import itertools
 import copy
+import math
 
 input_lines = list(fileinput.input())
 
@@ -59,18 +60,12 @@ while not all(coord_period):
             coord_period[coord_index] = iteration
 
 
-def gcd(a, b):
-    while b:
-        a, b = b, a % b
-    return a
-
-
 def list_lcm(integers):
-    while len(integers) > 1:
-        a = integers.pop(0)
-        b = integers.pop(0)
-        integers.append(a * b // gcd(a, b))
-    return integers[0]
+    lcm = integers.pop(0)
+    while len(integers) > 0:
+        term = integers.pop(0)
+        lcm *= term // math.gcd(lcm, term)
+    return lcm
 
 
 print(list_lcm(coord_period))

@@ -9,14 +9,6 @@ asteroidmap = []
 for line_index in range(len(input_lines)):
     asteroidmap.append(input_lines[line_index].strip())
 
-
-def gcd(a, b):
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a % b)
-
-
 maxcount = 0
 maxcoord = None
 for candidate_y in range(height):
@@ -30,7 +22,7 @@ for candidate_y in range(height):
                     ):
                         distance_y = other_y - candidate_y
                         distance_x = other_x - candidate_x
-                        divisor = gcd(abs(distance_y), abs(distance_x))
+                        divisor = math.gcd(abs(distance_y), abs(distance_x))
                         distance_y_unit = distance_y // divisor
                         distance_x_unit = distance_x // divisor
                         visible = True

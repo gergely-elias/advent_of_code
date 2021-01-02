@@ -1,18 +1,9 @@
 import fileinput
 import re
 import collections
+import math
 
 input_lines = list(fileinput.input())
-
-
-def gcd(a, b):
-    a, b = min(a, b), max(a, b)
-    b = b % a
-    if b == 0:
-        return a
-    else:
-        return gcd(b, a)
-
 
 forbidden_delays = collections.defaultdict(lambda: set())
 
@@ -29,7 +20,7 @@ modulo_list.sort()
 main_modulo = 1
 possible_remainders = range(1)
 for current_modulo in modulo_list:
-    lcm = main_modulo * current_modulo // gcd(main_modulo, current_modulo)
+    lcm = main_modulo * current_modulo // math.gcd(main_modulo, current_modulo)
     possible_remainders_lcm = [
         x + y for x in range(0, lcm, main_modulo) for y in possible_remainders
     ]
