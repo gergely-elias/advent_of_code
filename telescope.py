@@ -48,7 +48,7 @@ while command != "q":
             except ValueError:
                 message = "invalid value"
         elif command == "d":
-            print("change year (1..25)")
+            print("change day (1..25)")
             try:
                 day = int(input("> "))
                 if not 1 <= day <= 25:
@@ -58,7 +58,7 @@ while command != "q":
             except ValueError:
                 message = "invalid value"
         elif command == "l":
-            print("change level (1/2)")
+            print("change level (1..2)")
             try:
                 level = int(input("> "))
                 if not 1 <= level <= 2:
