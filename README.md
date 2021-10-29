@@ -14,3 +14,13 @@ activation
 ```
 source /path/to/virtual/environment/bin/activate
 ```
+
+## pre-commit pipeline
+installing packages
+```
+sudo apt install black flake8
+```
+installing pre-commit hook
+```
+pre-commit install
+```
