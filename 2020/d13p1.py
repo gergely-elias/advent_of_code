@@ -10,5 +10,5 @@ while all([timestamp % bus != 0 for bus in buses]):
     timestamp += 1
 print(
     (timestamp - earliest_timestamp)
-    * buses[[timestamp % bus for bus in buses].index(0)],
+    * buses[[timestamp % bus for bus in buses].index(0)]
 )

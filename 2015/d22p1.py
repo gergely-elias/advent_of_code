@@ -14,11 +14,7 @@ initial_state = {
     "my hit points": 50,
     "opp damage": boss_stats["Damage"],
     "opp hit points": boss_stats["Hit Points"],
-    "effect timers": {
-        "shield": 0,
-        "poison": 0,
-        "recharge": 0,
-    },
+    "effect timers": {"shield": 0, "poison": 0, "recharge": 0},
 }
 
 heap_entry_id = 0

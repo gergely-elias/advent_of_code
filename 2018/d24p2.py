@@ -133,9 +133,10 @@ def combat(boost):
         else:
             previous_number_of_units = total_number_of_units
         all_groups = immune_system + infections
-    return ["immune system", "infections"][
-        all_groups[0]["class"]
-    ], total_number_of_units
+    return (
+        ["immune system", "infections"][all_groups[0]["class"]],
+        total_number_of_units,
+    )
 
 
 boost = 0

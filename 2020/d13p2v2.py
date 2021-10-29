@@ -74,17 +74,9 @@ def chinese_remainder_theorem(remainders):
         common_remainder = (
             (
                 remainder1
-                * pow(
-                    modulus2,
-                    totient_from_factors(mod_prime_factors1),
-                    lcm_modulus,
-                )
+                * pow(modulus2, totient_from_factors(mod_prime_factors1), lcm_modulus)
                 + remainder2
-                * pow(
-                    modulus1,
-                    totient_from_factors(mod_prime_factors2),
-                    lcm_modulus,
-                )
+                * pow(modulus1, totient_from_factors(mod_prime_factors2), lcm_modulus)
             )
             % lcm_modulus,
             lcm_modulus_factor,

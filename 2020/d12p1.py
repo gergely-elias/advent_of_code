@@ -24,9 +24,5 @@ for line in input_lines:
             ship[2],
         )
     else:
-        ship = (
-            ship[0],
-            ship[1],
-            (ship[2] + value // 90 * rotations[action]) % 4,
-        )
+        ship = (ship[0], ship[1], (ship[2] + value // 90 * rotations[action]) % 4)
 print(abs(ship[0]) + abs(ship[1]))
