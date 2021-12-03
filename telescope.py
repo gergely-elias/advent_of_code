@@ -72,6 +72,11 @@ while command != "q":
         configfile.write(json.dumps(config, indent=2))
         configfile.close()
     elif command == "i":
+        sourcetemplate = "template.py"
+        sourcefile = os.path.join(year, "d" + ("0" + day)[-2:] + "p" + level + ".py")
+        if not os.path.exists(sourcefile):
+            shutil.copyfile(sourcetemplate, sourcefile)
+
         cookiefile = open(os.path.join(script_directory, "cookie.json"), "r")
         cookies = json.loads(cookiefile.read())
         cookiefile.close()
@@ -85,7 +90,7 @@ while command != "q":
             message += "download successful\n"
         else:
             message += response.reason + "\n"
-            exit()
+            continue
 
         inputfile = open(
             os.path.join(script_directory, year, "inputd" + ("0" + day)[-2:] + ".txt"),
@@ -93,11 +98,6 @@ while command != "q":
         )
         inputfile.write(response.text)
         inputfile.close()
-
-        sourcetemplate = "template.py"
-        sourcefile = os.path.join(year, "d" + ("0" + day)[-2:] + "p" + level + ".py")
-        if not os.path.exists(sourcefile):
-            shutil.copyfile(sourcetemplate, sourcefile)
     elif command == "s":
         answer = input(
             "value to submit?"
@@ -121,7 +121,7 @@ while command != "q":
             message += "\n"
         else:
             message += response.reason + "\n"
-            exit()
+            continue
 
         parsed_html = (
             bs4.BeautifulSoup(response_html, "html.parser")
@@ -157,7 +157,7 @@ while command != "q":
                     output = None
                 else:
                     message += response.reason + "\n"
-                    exit()
+                    continue
 
                 parsed_html = (
                     bs4.BeautifulSoup(response_html, "html.parser")
