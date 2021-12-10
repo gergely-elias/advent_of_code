@@ -1,7 +1,6 @@
 import fileinput
 import re
-import operator
-import functools
+import math
 
 input_lines = list(fileinput.input())
 
@@ -31,8 +30,7 @@ def partitions(expected_sum, expected_length):
 number_of_teaspoons = 100
 maximal_score = 0
 for partition in partitions(number_of_teaspoons, number_of_ingredients):
-    cookie_score = functools.reduce(
-        operator.mul,
+    cookie_score = math.prod(
         [
             max(
                 sum(
@@ -44,8 +42,7 @@ for partition in partitions(number_of_teaspoons, number_of_ingredients):
                 0,
             )
             for j in range(number_of_properties - 1)
-        ],
-        1,
+        ]
     )
     maximal_score = max(maximal_score, cookie_score)
 print(maximal_score)
