@@ -37,12 +37,22 @@ for en_route_small_cave in en_route_small_caves:
     )
 
 valid_en_route_small_cave_paths = set()
-for cave_visited_twice in en_route_small_caves:
-    for en_route_path in itertools.permutations(
-        en_route_small_caves + [cave_visited_twice]
+for number_of_en_route_small_caves_visited_once in range(len(en_route_small_caves) + 1):
+    for caves_visited_once in itertools.combinations(
+        en_route_small_caves, number_of_en_route_small_caves_visited_once
     ):
-        for i in range(len(en_route_path) + 1):
-            valid_en_route_small_cave_paths.add(tuple(en_route_path[:i]))
+        for en_route_path in itertools.permutations(caves_visited_once):
+            valid_en_route_small_cave_paths.add(tuple(en_route_path))
+for cave_visited_twice in en_route_small_caves:
+    for number_of_en_route_small_caves_visited_once in range(len(en_route_small_caves)):
+        for caves_visited_once in itertools.combinations(
+            [cave for cave in en_route_small_caves if cave != cave_visited_twice],
+            number_of_en_route_small_caves_visited_once,
+        ):
+            for en_route_path in itertools.permutations(
+                caves_visited_once + 2 * (cave_visited_twice,)
+            ):
+                valid_en_route_small_cave_paths.add(tuple(en_route_path))
 
 total_paths = 0
 for en_route_small_cave_path in valid_en_route_small_cave_paths:
