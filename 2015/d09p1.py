@@ -1,27 +1,28 @@
 import fileinput
 import itertools
+import re
 
 input_lines = list(fileinput.input())
+locations = set()
+distances = dict()
 
-number_of_locations = int((len(input_lines) * 2) ** 0.5) + 1
-distances = number_of_locations * [0]
-index = 0
-for i in range(number_of_locations):
-    distances[i] = number_of_locations * [0]
-
-for i in range(number_of_locations - 1):
-    for j in range(i + 1, number_of_locations):
-        dist = int(input_lines[index].strip().split(" ")[-1])
-        distances[i][j] = dist
-        distances[j][i] = dist
-        index += 1
+for line in input_lines:
+    location1, location2, distance_str = re.findall(
+        r"(.*) to (.*) = (\d+)", line.strip()
+    )[0]
+    locations.update([location1, location2])
+    distance = int(distance_str)
+    distances[(location1, location2)] = distance
+    distances[(location2, location1)] = distance
 
 min_total_distance = float("inf")
-all_city_permutations = itertools.permutations(range(number_of_locations))
+all_city_permutations = itertools.permutations(locations)
 for city_order in all_city_permutations:
     current_total_distance = 0
-    for i in range(len(city_order) - 1):
-        current_total_distance += distances[city_order[i]][city_order[i + 1]]
+    for city_index in range(len(city_order) - 1):
+        current_total_distance += distances[
+            tuple(city_order[city_index : city_index + 2])
+        ]
     if current_total_distance < min_total_distance:
         min_total_distance = current_total_distance
 print(min_total_distance)
