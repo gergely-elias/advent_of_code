@@ -2,7 +2,7 @@ import fileinput
 
 input_lines = list(fileinput.input())
 
-divisor_sum_threshold = int(input_lines[0]) // 11
+divisor_sum_threshold = (int(input_lines[0]) - 1) // 11 + 1
 candidate = 1
 while (
     sum(
