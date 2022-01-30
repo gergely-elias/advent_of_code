@@ -37,7 +37,7 @@ def battle_won(equipment):
     return hits_needed[0] <= hits_needed[1]
 
 
-most_expensive_loss = 0
+most_expensive_loss = -float("inf")
 weapon_options = set(itertools.combinations(weapons, 1))
 armor_options = set.union(
     *[set(itertools.combinations(armor, armor_amount)) for armor_amount in range(2)]
@@ -53,4 +53,5 @@ for equipped_weapon, equipped_armor, equipped_rings in itertools.product(
         most_expensive_loss = max(
             most_expensive_loss, sum([item[0] for item in equipment])
         )
+assert most_expensive_loss > -float("inf")
 print(most_expensive_loss)
