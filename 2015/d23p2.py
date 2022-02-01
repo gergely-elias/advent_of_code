@@ -8,7 +8,7 @@ while line_index < len(input_lines):
     command = input_lines[line_index].strip().split(" ")
     offset = 1
     if command[0] == "hlf":
-        registers[command[1]] /= 2
+        registers[command[1]] //= 2
     elif command[0] == "tpl":
         registers[command[1]] *= 3
     elif command[0] == "inc":
