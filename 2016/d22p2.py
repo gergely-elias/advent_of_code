@@ -26,20 +26,18 @@ moveable_nodes = networkx.ancestors(compatibility, empty_node)
 moveable_subgraph = compatibility.subgraph(moveable_nodes)
 assert len(moveable_nodes) * (len(moveable_nodes) - 1) == len(moveable_subgraph.edges())
 
-moveable_node_coordinates = set(tuple(node[:2]) for node in moveable_nodes)
+
 target_node = (0, 0)
 data_node = (max([node[0] for node in moveable_nodes]), 0)
+moveable_nodes.add(empty_node)
+moveable_node_coordinates = set(tuple(node[:2]) for node in moveable_nodes)
 
 seen_states = set()
 heap_entry_id = 0
 states = [(0, heap_entry_id, (data_node, empty_node[:2]))]
 heap_entry_id += 1
-
 while len(states) > 0:
     steps_made, _, state = heapq.heappop(states)
-    if state in seen_states:
-        continue
-    seen_states.add(state)
     current_data_node, current_empty_node = state
     if current_data_node == target_node:
         print(steps_made)
@@ -51,21 +49,10 @@ while len(states) > 0:
         )
         if empty_neighbour in moveable_node_coordinates:
             if empty_neighbour == current_data_node:
-                heapq.heappush(
-                    states,
-                    (
-                        steps_made + 1,
-                        heap_entry_id,
-                        (current_empty_node, empty_neighbour),
-                    ),
-                )
+                next_state = (current_empty_node, empty_neighbour)
             else:
-                heapq.heappush(
-                    states,
-                    (
-                        steps_made + 1,
-                        heap_entry_id,
-                        (current_data_node, empty_neighbour),
-                    ),
-                )
+                next_state = (current_data_node, empty_neighbour)
+            if next_state not in seen_states:
+                seen_states.add(next_state)
+                heapq.heappush(states, (steps_made + 1, heap_entry_id, next_state))
             heap_entry_id += 1
