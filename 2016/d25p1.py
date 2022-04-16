@@ -4,7 +4,7 @@ input_lines = list(fileinput.input())
 
 instructions = [line.strip().split() for line in input_lines]
 
-register_a_init = 0
+register_a_init = 1
 while True:
     registers = {"a": register_a_init, "b": 0, "c": 0, "d": 0}
     pointer = 0
@@ -41,7 +41,6 @@ while True:
             else:
                 output = int(params[0])
             if output != len(outputs) % 2:
-                register_a_init += 1
                 break
             else:
                 outputs.append(output)
@@ -52,3 +51,4 @@ while True:
             pointer += 1
         else:
             assert False
+    register_a_init += 1
