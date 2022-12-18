@@ -89,11 +89,17 @@ def optimize_for_valves(valves_to_open):
     return best_pressure
 
 
+single_worker_pressures = {
+    valve_set: optimize_for_valves(valve_set)
+    for valve_set in more_itertools.powerset(valves_to_open)
+}
+
+
 workers = 2
 print(
     max(
         sum(
-            optimize_for_valves(tuple(valves_of_worker))
+            single_worker_pressures[tuple(valves_of_worker)]
             for valves_of_worker in valve_partition
         )
         for valve_partition in more_itertools.set_partitions(valves_to_open, workers)
