@@ -66,102 +66,97 @@ while len(statesheap) > 0:
     )
     if upper_limit_from_current_state <= best_pressure:
         continue
-    if timestamp == total_time:
-        best_pressure = max(best_pressure, current_state_max_pressure)
-    else:
-        best_pressure = max(
-            best_pressure,
-            (total_time - timestamp) * current_pressure_per_minute
-            + current_state_max_pressure,
+    best_pressure = max(
+        best_pressure,
+        (total_time - timestamp) * current_pressure_per_minute
+        + current_state_max_pressure,
+    )
+    for worker_index in range(workers):
+        worker_current_valve = current_valves[worker_index]
+        other_workers_valves = (
+            current_valves[:worker_index] + current_valves[worker_index + 1 :]
         )
-        for worker_index in range(workers):
-            worker_current_valve = current_valves[worker_index]
-            other_workers_valves = (
-                current_valves[:worker_index] + current_valves[worker_index + 1 :]
-            )
-            for next_valve in valves_still_to_open:
-                distance_to_next_valve = all_distances[
-                    (worker_current_valve, next_valve)
-                ]
-                next_timestamp = timestamp + distance_to_next_valve + 1
-                if next_timestamp < total_time:
-                    next_valves = [
-                        list(
-                            set(
-                                [
-                                    (
-                                        "move",
-                                        networkx.shortest_path(
-                                            valve_graph,
-                                            other_worker_valve,
-                                            target_valve,
-                                        )[distance_to_next_valve + 1],
-                                    )
-                                    for target_valve in valves_still_to_open
-                                    if all_distances[(other_worker_valve, target_valve)]
-                                    >= distance_to_next_valve + 1
-                                ]
-                                + [
-                                    ("open", valve)
-                                    for valve in valves_still_to_open
-                                    if all_distances[(other_worker_valve, valve)]
-                                    == distance_to_next_valve
-                                ]
-                            )
-                        )
-                        for other_worker_valve in other_workers_valves
-                    ]
-                    for next_valve_tuple in itertools.product(*next_valves):
-
-                        next_valve_resorted = tuple(
-                            sorted(
-                                [next_valve]
-                                + list([valve[1] for valve in next_valve_tuple])
-                            )
-                        )
-                        next_open = tuple(
+        for next_valve in valves_still_to_open:
+            distance_to_next_valve = all_distances[(worker_current_valve, next_valve)]
+            next_timestamp = timestamp + distance_to_next_valve + 1
+            if next_timestamp < total_time:
+                next_valves = [
+                    list(
+                        set(
                             [
-                                valve
+                                (
+                                    "move",
+                                    networkx.shortest_path(
+                                        valve_graph,
+                                        other_worker_valve,
+                                        target_valve,
+                                    )[distance_to_next_valve + 1],
+                                )
+                                for target_valve in valves_still_to_open
+                                if all_distances[(other_worker_valve, target_valve)]
+                                >= distance_to_next_valve + 1
+                            ]
+                            + [
+                                ("open", valve)
                                 for valve in valves_still_to_open
-                                if valve != next_valve
-                                and valve
-                                not in [
-                                    new_open_valve[1]
-                                    for new_open_valve in next_valve_tuple
-                                    if new_open_valve[0] == "open"
-                                ]
+                                if all_distances[(other_worker_valve, valve)]
+                                == distance_to_next_valve
                             ]
                         )
-                        next_state = (
-                            next_timestamp,
-                            next_valve_resorted,
-                            next_open,
-                            current_pressure_per_minute
-                            + valve_pressures[next_valve]
-                            + sum(
-                                [
-                                    valve_pressures[new_open_valve[1]]
-                                    for new_open_valve in set(next_valve_tuple)
-                                    if new_open_valve[0] == "open"
-                                    and new_open_valve[1] != next_valve
-                                ]
+                    )
+                    for other_worker_valve in other_workers_valves
+                ]
+                for next_valve_tuple in itertools.product(*next_valves):
+
+                    next_valve_resorted = tuple(
+                        sorted(
+                            [next_valve]
+                            + list([valve[1] for valve in next_valve_tuple])
+                        )
+                    )
+                    next_open = tuple(
+                        [
+                            valve
+                            for valve in valves_still_to_open
+                            if valve != next_valve
+                            and valve
+                            not in [
+                                new_open_valve[1]
+                                for new_open_valve in next_valve_tuple
+                                if new_open_valve[0] == "open"
+                            ]
+                        ]
+                    )
+                    next_state = (
+                        next_timestamp,
+                        next_valve_resorted,
+                        next_open,
+                        current_pressure_per_minute
+                        + valve_pressures[next_valve]
+                        + sum(
+                            [
+                                valve_pressures[new_open_valve[1]]
+                                for new_open_valve in set(next_valve_tuple)
+                                if new_open_valve[0] == "open"
+                                and new_open_valve[1] != next_valve
+                            ]
+                        ),
+                    )
+                    next_state_pressure = (
+                        next_timestamp - timestamp
+                    ) * current_pressure_per_minute + current_state_max_pressure
+                    if max_pressures[next_state] < next_state_pressure:
+                        max_pressures[next_state] = next_state_pressure
+                    if next_state not in processed_states:
+                        processed_states.add(next_state)
+                        heapq.heappush(
+                            statesheap,
+                            (
+                                next_timestamp,
+                                heap_entry_id,
+                                next_state,
                             ),
                         )
-                        next_state_pressure = (
-                            next_timestamp - timestamp
-                        ) * current_pressure_per_minute + current_state_max_pressure
-                        if max_pressures[next_state] < next_state_pressure:
-                            max_pressures[next_state] = next_state_pressure
-                        if next_state not in processed_states:
-                            processed_states.add(next_state)
-                            heapq.heappush(
-                                statesheap,
-                                (
-                                    next_timestamp,
-                                    heap_entry_id,
-                                    next_state,
-                                ),
-                            )
-                            heap_entry_id += 1
+                        heap_entry_id += 1
 
 print(best_pressure)

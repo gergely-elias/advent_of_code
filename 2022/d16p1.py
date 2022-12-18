@@ -42,41 +42,36 @@ while len(statesheap) > 0:
         current_pressure_per_minute,
     ) = current_state
     current_state_max_pressure = max_pressures[current_state]
-    if timestamp == total_time:
-        best_pressure = max(best_pressure, current_state_max_pressure)
-    else:
-        best_pressure = max(
-            best_pressure,
-            (total_time - timestamp) * current_pressure_per_minute
-            + current_state_max_pressure,
-        )
-        for next_valve in valves_still_to_open:
-            distance_to_next_valve = all_distances[(current_valve, next_valve)]
-            next_timestamp = timestamp + distance_to_next_valve + 1
-            if next_timestamp < total_time:
-                next_state = (
-                    next_timestamp,
-                    next_valve,
-                    tuple(
-                        [valve for valve in valves_still_to_open if valve != next_valve]
+    best_pressure = max(
+        best_pressure,
+        (total_time - timestamp) * current_pressure_per_minute
+        + current_state_max_pressure,
+    )
+    for next_valve in valves_still_to_open:
+        distance_to_next_valve = all_distances[(current_valve, next_valve)]
+        next_timestamp = timestamp + distance_to_next_valve + 1
+        if next_timestamp < total_time:
+            next_state = (
+                next_timestamp,
+                next_valve,
+                tuple([valve for valve in valves_still_to_open if valve != next_valve]),
+                current_pressure_per_minute + valve_pressures[next_valve],
+            )
+            next_state_pressure = (
+                next_timestamp - timestamp
+            ) * current_pressure_per_minute + current_state_max_pressure
+            if max_pressures[next_state] < next_state_pressure:
+                max_pressures[next_state] = next_state_pressure
+            if next_state not in processed_states:
+                processed_states.add(next_state)
+                heapq.heappush(
+                    statesheap,
+                    (
+                        next_timestamp,
+                        heap_entry_id,
+                        next_state,
                     ),
-                    current_pressure_per_minute + valve_pressures[next_valve],
                 )
-                next_state_pressure = (
-                    next_timestamp - timestamp
-                ) * current_pressure_per_minute + current_state_max_pressure
-                if max_pressures[next_state] < next_state_pressure:
-                    max_pressures[next_state] = next_state_pressure
-                if next_state not in processed_states:
-                    processed_states.add(next_state)
-                    heapq.heappush(
-                        statesheap,
-                        (
-                            next_timestamp,
-                            heap_entry_id,
-                            next_state,
-                        ),
-                    )
-                    heap_entry_id += 1
+                heap_entry_id += 1
 
 print(best_pressure)
