@@ -1,0 +1,42 @@
+cube representation
+using a coordinate-system of right hand orientation
+
+y |
+  |
+  |     x
+  +------
+ /
+/ z
+
+the assembled cube's faces have the following normal vectors which will be used to identiy them
+front:   0, 0, 1
+back:    0, 0,-1
+top:     0, 1, 0
+bottom:  0,-1, 0
+right:   1, 0, 0
+left:   -1, 0, 0
+
+a default orientation of each face is also defined to be able to track how the sides are rotated
+the default 'east' (facing=0 as defined in the problem) neighbour sequences are as following
+front - right - top - front
+back - bottom - left - back
+
+using these conventions each side has the following neighbours with the following orientations and coordinates:
+
+if u + v + w = 1                           if u + v + w = -1
+                +-----------+                              +-----------+              
+                |  v  w  u  |                              |  w  u  v  |              
+                |           |                              |           |              
+                |     v     |                              |     v     |              
+    +-----------+-----------+-----------+      +-----------+-----------+-----------+  
+    | -w -u -v  |  u  v  w  |  w  u  v  |      | -v -w -u  |  u  v  w  |  v  w  u  |  
+    |           |           |           |      |           |           |           |  
+    |     <     |     >     |     ^     |      |     <     |     >     |     ^     |  
+    +-----------+-----------+-----------+      +-----------+-----------+-----------+  
+                | -v -w -u  |                              | -w -u -v  |              
+                |           |                              |           |              
+                |     <     |                              |     <     |              
+                +-----------+                              +-----------+              
+
+it's worth noting the orientations of neighbours are the same for each face
+their coordinates depend on the face though, the direction of shift which is determined by the sum of the coordinates of the face
