@@ -1,4 +1,5 @@
 import fileinput
+import networkx
 
 input_lines = list(fileinput.input())
 
@@ -12,7 +13,9 @@ number_of_rocks = 1000000000000
 chamber_width = 7
 tower_height = 0
 taken_positions = set()
-columns_compared_to_tower = [0] * chamber_width
+columns_compared_to_tower = tuple(
+    (column_index, 0) for column_index in range(chamber_width)
+)
 rock_types = [
     [(0, 0), (1, 0), (2, 0), (3, 0)],
     [(1, 0), (0, 1), (1, 1), (2, 1), (1, 2)],
@@ -20,15 +23,13 @@ rock_types = [
     [(0, 0), (0, 1), (0, 2), (0, 3)],
     [(0, 0), (0, 1), (1, 0), (1, 1)],
 ]
-jet_char_to_direction = {
-    ">": (1, 0),
-    "<": (-1, 0),
-}
+jet_char_to_direction = {">": (1, 0), "<": (-1, 0)}
 fall_direction = (0, -1)
 
 measures_at_state = dict()
 state_at_rock = dict()
 jet_index = 0
+deepest_cave = 0
 for rock_index in range(number_of_rocks):
     state = (
         tuple(columns_compared_to_tower),
@@ -93,13 +94,23 @@ for rock_index in range(number_of_rocks):
                     rock_part_height[rock_part_position[0]],
                     rock_part_position[1] + 1 - tower_height,
                 )
-            for column_index in range(chamber_width):
-                columns_compared_to_tower[column_index] = max(
-                    columns_compared_to_tower[column_index]
-                    - tower_height
-                    + prev_tower_height,
-                    rock_part_height[column_index],
-                )
+
+            deepest_cave += tower_height - prev_tower_height
+            new_skyline = []
+            for xi in range(chamber_width):
+                for yi in range(-deepest_cave, 1):
+                    if (xi, yi + tower_height) not in taken_positions:
+                        new_skyline.append((xi, yi))
+            cavemap = networkx.Graph()
+            for cave_cell in new_skyline:
+                for direction in [(1, 0), (0, 1)]:
+                    neighbour_cell = tuple_sum(cave_cell, direction)
+                    if neighbour_cell in new_skyline:
+                        cavemap.add_edge(cave_cell, neighbour_cell)
+            columns_compared_to_tower = tuple(
+                sorted(networkx.depth_first_search.dfs_preorder_nodes(cavemap, (0, 0)))
+            )
+            deepest_cave = max(-y for (_, y) in columns_compared_to_tower)
             rock_landed = True
         else:
             rock_position = next_rock_position
