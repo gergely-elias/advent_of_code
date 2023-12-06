@@ -1,5 +1,5 @@
 import fileinput
-from math import prod
+import math
 
 input_lines = [line.strip() for line in fileinput.input()]
 sum_of_powers = 0
@@ -17,5 +17,5 @@ for line_index, line in enumerate(input_lines):
         for color in balls_by_color:
             if balls_by_color[color] > number_of_balls[color]:
                 number_of_balls[color] = balls_by_color[color]
-    sum_of_powers += prod(number_of_balls.values())
+    sum_of_powers += math.prod(number_of_balls.values())
 print(sum_of_powers)

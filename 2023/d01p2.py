@@ -1,5 +1,5 @@
 import fileinput
-from string import digits
+import string
 
 input_lines = list(line.strip() for line in fileinput.input())
 spelt_digits = {
@@ -14,7 +14,7 @@ calibration_value = 0
 for line in input_lines:
     first_found_digit, last_found_digit = None, None
     for char_index in range(len(line)):
-        if line[char_index] in digits:
+        if line[char_index] in string.digits:
             first_found_digit = int(line[char_index])
             break
         for digit, spelt_digit in spelt_digits.items():
@@ -24,7 +24,7 @@ for line in input_lines:
         if first_found_digit is not None:
             break
     for char_index in range(len(line) - 1, -1, -1):
-        if line[char_index] in digits:
+        if line[char_index] in string.digits:
             last_found_digit = int(line[char_index])
             break
         for digit, spelt_digit in spelt_digits.items():

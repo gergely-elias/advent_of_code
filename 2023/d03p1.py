@@ -1,5 +1,5 @@
 import fileinput
-from string import digits
+import string
 
 input_lines = [line.strip() for line in fileinput.input()]
 
@@ -7,19 +7,19 @@ symbol_positions = []
 numbers_by_positions = {}
 for y in range(len(input_lines)):
     for x in range(len(input_lines[y])):
-        if input_lines[y][x] in digits and (
-            x == 0 or input_lines[y][x - 1] not in digits
+        if input_lines[y][x] in string.digits and (
+            x == 0 or input_lines[y][x - 1] not in string.digits
         ):
             digit_index = 0
             number_value = 0
             while (
                 x + digit_index < len(input_lines[y])
-                and input_lines[y][x + digit_index] in digits
+                and input_lines[y][x + digit_index] in string.digits
             ):
                 number_value = 10 * number_value + int(input_lines[y][x + digit_index])
                 digit_index += 1
             numbers_by_positions[(y, x, x + digit_index - 1)] = number_value
-        if input_lines[y][x] not in digits + ".":
+        if input_lines[y][x] not in string.digits + ".":
             symbol_positions.append((y, x))
 
 sum_of_part_numbers = 0
