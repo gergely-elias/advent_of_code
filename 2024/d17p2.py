@@ -85,15 +85,30 @@ def convert_to_octal(octal_digits):
     return sum(digit * 8**place for place, digit in enumerate(octal_digits))
 
 
-suffices = [()]
-for number_of_digits in range(len(program)):
-    next_suffices = []
-    for suffix in suffices:
-        for next_digit in range(8):
-            next_suffix = (next_digit,) + suffix
-            output = run_program(convert_to_octal(next_suffix))
-            if output == program[-len(output) :]:
-                next_suffices.append(next_suffix)
-    suffices = next_suffices
+# suffices = [()]
+# for number_of_digits in range(len(program)):
+#     next_suffices = []
+#     for suffix in suffices:
+#         for next_digit in range(8):
+#             next_suffix = (next_digit,) + suffix
+#             output = run_program(convert_to_octal(next_suffix))
+#             if output == program[-len(output) :]:
+#                 next_suffices.append(next_suffix)
+#     suffices = next_suffices
 
-print(convert_to_octal(min(suffices)))
+# print(convert_to_octal(min(suffices)))
+
+
+def find_recursively(suffix):
+    for next_digit in range(8):
+        next_suffix = (next_digit,) + suffix
+        output = run_program(convert_to_octal(next_suffix))
+        # print(convert_to_octal(next_suffix), next_suffix, output)
+        if output == program:
+            print(convert_to_octal(next_suffix))
+            exit()
+        if output == program[-len(output) :]:
+            find_recursively(next_suffix)
+
+
+find_recursively(())
